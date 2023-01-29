@@ -13,6 +13,7 @@ app.use('/public', express.static('public'));
 
 nunjucks.configure('src/module/view', {
     autoescape:true,
+    
     express:app,
 })
 
