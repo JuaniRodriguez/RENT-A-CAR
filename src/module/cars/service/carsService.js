@@ -9,4 +9,16 @@ export class carsService {
 
     }
 
+    async editCar(id,cardData) {
+        await this.carRepository.editCar(id,cardData)
+    }
+
+    async deleteCar(id) {
+        await this.carRepository.deleteCar(id)
+    }
+
+    async getCarById(id) {
+        await this.carRepository.getCarById(id)
+    }
+
 }

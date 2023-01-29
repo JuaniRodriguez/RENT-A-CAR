@@ -31,24 +31,48 @@ export class CarRepository {
         return getCarById(result.lastInsertRowId)
     }
 
+    editCar(id,carData) {
+        const updateCar=`UPDATE ${this.tableName} SET
+            brand=${carData.brand},
+            model=${carData.model},
+            year=${carData.year},
+            kms=${carData.kms},
+            color=${carData.color},
+            airConditioner=${carData.airConditioner},
+            passengers=${carData.passengers},
+            manualAutomatic=${carData.manualAutomatic},
+            image=${carData.image}
+            WHERE id=${id}
+        `
+        this.database.prepare(updateCar).run();
+        
+    }
+
+    deleteCar(id) {
+        const carToDelete=`DELETE FROM ${this.tableName} WHERE id=${id}`
+        this.database.prepare(carToDelete).run();
+        
+    }
+
+    getCarById(id) {
+        const carData=`SELECT
+            brand,
+            model,
+            year,
+            kms,
+            color,
+            airConditioner,
+            passengers,
+            manualAutomatic,
+            image,
+            FROM ${this.tableName} where id=?
+        `
+        const car=this.database.prepare(carData).get(id)
+        return car;
+    }
 }
 
-function getCarById(id) {
-    const carData=`SELECT
-        brand,
-        model,
-        year,
-        kms,
-        color,
-        airConditioner,
-        passengers,
-        manualAutomatic,
-        image,
-        FROM ${this.tableName} where id=?
-    `
-    const car=this.database.prepare(carData).get(id)
-    return car;
-}
+
 
 
 //add car,edit car,delete car, 

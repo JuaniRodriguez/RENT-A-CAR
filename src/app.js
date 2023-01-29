@@ -21,6 +21,12 @@ app.get('/',(req,res)=> {
     res.render('defaultPage.html')
 })
 
+app.get('/cars/createCarForm', (req,res)=>  {
+
+    res.render('createCarForm.html')
+
+})
+
 
 
 app.listen(port)
