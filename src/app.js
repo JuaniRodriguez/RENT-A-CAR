@@ -27,6 +27,11 @@ app.get('/cars/createCarForm', (req,res)=>  {
 
 })
 
+app.post('/cars/createCarForm',(req,res)=> {
+    console.log(req.body);
+    res.redirect('/')
+})
+
 
 
 app.listen(port)
