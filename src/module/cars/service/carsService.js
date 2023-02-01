@@ -4,6 +4,10 @@ export class carsService {
         this.carRepository=carRepository
     }
 
+    async getAllCars() {
+        return this.carRepository.getAllCars()
+    }
+    
     async createCar(carData) {
         return this.carRepository.addCar(carData)
 

@@ -4,6 +4,24 @@ export class CarRepository {
         this.database=database;
     }
 //ver si deberia crear una tabla
+
+    getAllCars() {
+        const carsData=`SELECT 
+            id,
+            brand,
+            model,
+            year,
+            kms,
+            color,
+            airConditioner,
+            passengers,
+            manualAutomatic,
+            image
+            FROM ${this.tableName}
+        `
+        return this.database.prepare(carsData).all()
+    }
+
     addCar(carData) {//tengo que chequear si ya existe el id
         const data=`INSERT INTO ${this.tableName} (
                 brand,
@@ -56,6 +74,7 @@ export class CarRepository {
 
     getCarById(id) {
         const carData=`SELECT
+            id,
             brand,
             model,
             year,
