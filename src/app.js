@@ -11,28 +11,48 @@ app.use(express.urlencoded({ extended: true }));
 app.use('/public', express.static('public'));
   
 
-nunjucks.configure('src/module/view', {
+nunjucks.configure('src/module', {
     autoescape:true,
-    
     express:app,
 })
 
 app.get('/',(req,res)=> {
-    res.render('defaultPage.html')
+    const carsData={
+        id:1,
+        brand:'toyota',
+        model:2006,
+        year:2014,
+        KMS:50,
+    }
+    
+    res.render('cars/view/cars.html', {
+        carsData
+        //data: {
+        //    brand:"toyota",
+        //    year:2006,
+        //    color:"red"
+        //}
+    })
 })
 
 app.get('/cars/createCarForm', (req,res)=>  {
 
-    res.render('createCarForm.html')
+    res.render('cars/view/createCarForm.html')
 
 })
 
-app.post('/cars/createCarForm',(req,res)=> {
+app.post('createCarForm',(req,res)=> {
     console.log(req.body);
     res.redirect('/')
 })
 
+app.get('cars/:id/editCarForm',(req,res)=>{ 
+    res.render('cars/view/editCarForm.html')
+})
 
+//app.post('cars/:id/editCarForm') {
+//    
+//}
 
 app.listen(port)
 

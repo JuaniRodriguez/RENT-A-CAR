@@ -1,0 +1,21 @@
+{% extends "view/defaultPage.html" %} 
+
+{% block tableBody %} 
+
+<tr>
+    <td class="has-text-centered is-size-5">{{carsData.id}}</td>
+    <td class="has-text-centered is-size-5">{{carsData.brand}}</td>  
+    <td class="has-text-centered is-size-5">{{carsData.model}}</td>
+    <td class="has-text-centered is-size-5">{{carsData.year}}</td>
+    <td class="has-text-centered is-size-5">{{carsData.kms}}</td>
+    <td class="has-text-centered is-size-5">{{carsData.color}}</td>
+    <td class="has-text-centered is-size-5">{{carsData.airConditioner}}</td>
+    <td class="has-text-centered is-size-5">{{carsData.passengers}}</td>
+    <td class="has-text-centered is-size-5">{{carsData.type}}</td>
+    <td class="has-text-centered is-size-5">{{carsData.image}}</td>
+    <td class="has-text-centered is-size-5"><a href='cars/{{carsData.id}}/editCarForm   '>EDIT</a>-<a href="/{{carsData.id}}/delete">DELETE</a></td>
+//COMO INTERPRETA EL LINK DE ESA MANERA?
+</tr>
+
+
+{%endblock %}

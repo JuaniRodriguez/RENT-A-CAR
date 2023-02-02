@@ -13,7 +13,8 @@
         <ul>
           <li class="is-active"><a class="is-size-4">Users</a></li>
           <li><a class="is-size-4">Sign up</a></li>
-          <li><a class="is-size-4">Cars</a></li>
+          <li><a class="is-size-4">Reservation</a></li>
+          <li><a class="is-size-4" href="/cars/createCarForm">Add car</a></li>
         </ul>
     </div>
     
@@ -32,14 +33,17 @@
                     <th class="has-text-centered is-size-4">Passengers</th>
                     <th class="has-text-centered is-size-4">Type</th>
                     <th class="has-text-centered is-size-4">Image</th>
+                    <th class="has-text-centered is-size-4">Manage</th>
+                    
 
                 </tr>
             </thead>
             <tbody>
+              {% block tableBody %} {% endblock %}
                 <!--
                     asi irian las filas, les tengo que pasar la info  con nunjucks
                 <tr>
-                    <td class="has-text-centered is-size-5">1</td>
+                    <td class="has-text-centered is-size-5">{</td>
                     <td>1</td>  
                     <td>1</td>
                     <td>1</td>
