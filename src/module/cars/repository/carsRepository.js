@@ -1,4 +1,4 @@
-export class CarRepository {
+module.exports= class CarRepository {
     constructor(database) {
         this.tableName='cars',
         this.database=database;

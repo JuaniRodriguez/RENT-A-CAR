@@ -1,6 +1,12 @@
 const path=require('path');
 const multer=require('multer');
-const database=require('better-sqlite3')
+const database=require('better-sqlite3');
+const { default:DIContainer,object,use,factory} = require('rsdi');
+const {carsController,carsService,carsRepository}= require('../module/cars/carsModule.js')
+
+function runDatabase() {
+      return new database(process.env.DB_PATH,{verbose:console.log})
+}
 
 function uploadImages() {
     const storage=multer.diskStorage({
@@ -14,7 +20,25 @@ function uploadImages() {
     return multer({storage:storage});
 }
 
-//function runDatabase() {
-//      return new database(process.env.DB_PATH,{verbose:console.log})
-//}
+function addCommonDefinitions(container) {
+    container.add({
+        runDatabase:factory(runDatabase),
+        uploadImages:factory(uploadImages)
+    })
+}
+
+function addCarsDefinitions(container) {
+    container.add({
+        carsController:object(carsController).construct(use('carsService'),use('uploadImages')),
+        carsService:object(carsService).construct(use('carsRepository')),
+        carsRepository:object(carsRepository).construct(use('runDatabase'))
+    })
+}
+
+module.exports= function configureDI() {
+    const container=new DIContainer();
+    addCommonDefinitions(container);
+    addCarsDefinitions(container);
+    return container
+}
 

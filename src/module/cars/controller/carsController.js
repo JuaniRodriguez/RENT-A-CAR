@@ -1,14 +1,14 @@
 const carsService=require('../service/carsService.js')
 
-export class carsController {
+module.exports= class carsController {
     constructor(carsService,uploadDataHandler) {
         this.carsService=carsService,
-        this.dataHandler=uploadDataHandler
+        this.uploadDataHandler=uploadDataHandler
     }
-    /*
+    
     carRoutes(app) {
         const baseRoute='/cars';
-        app.get(`${baseRoute},this.homePage.bind(this));
+        app.get(`${baseRoute}`,this.homePage.bind(this));
         app.get(`${baseRoute}/createCarForm`,this.createCar.bind(this));
         app.post(`${baseRoute}/createCarForm`,this.uploadDataHandler.single('uploadedImage'),this.createdCar.bind(this));
         app.get(`${baseRoute}/:id/editCar`,this.editCar.bind(this));
@@ -32,8 +32,8 @@ export class carsController {
 
     async createdCar(req,res) {
         const data=req.body;
-        await this.carsService.addCar();
-        res.redirect('/)
+        await this.carsService.addCar(data);
+        res.redirect('/')
 
     }
 
@@ -53,11 +53,9 @@ export class carsController {
     }
 
     async deleteCar(req,res) {
-        const carToDelete=
+        const carToDelete= await this.service.deleteCar(req.params['id']);
+        res.redirect('/')
     }
-
-    */
-    
 }
 
 //crear el form de editar

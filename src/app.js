@@ -1,8 +1,11 @@
+const { config } = require('dotenv');
 const express=require('express');
 const nunjucks=require('nunjucks');
 require('dotenv').config();
 
-
+const configureDependencyInjection=require('./config/di.js')
+//const {initApp: initCarModule}=require('./module/cars/carsModule.js')
+const carModule=require('./module/cars/carsModule.js')
 
 const app=express();
 const port=3000;
@@ -16,7 +19,15 @@ nunjucks.configure('src/module', {
     express:app,
 })
 
-app.get('/',(req,res)=> {
+
+const container=configureDependencyInjection(app);
+carModule.initApp(app,container)
+const carsController=container.get('carsController');
+app.get('/',carsController.homePage.bind(carsController));
+
+
+
+/*app.get('/',(req,res)=> {
     const carsData={
         id:1,
         brand:'toyota',
@@ -53,6 +64,9 @@ app.get('cars/:id/editCarForm',(req,res)=>{
 //app.post('cars/:id/editCarForm') {
 //    
 //}
+
+*/
+
 
 app.listen(port)
 
