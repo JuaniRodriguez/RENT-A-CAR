@@ -25,4 +25,7 @@
 --    picture TEXT NOT NULL
 --)
 
+
+---DELETE FROM cars WHERE passengers=5
+
 SELECT * FROM cars

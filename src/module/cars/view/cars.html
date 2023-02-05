@@ -1,9 +1,12 @@
+
+
 {% extends "view/defaultPage.html" %} 
 
 
 {% block tableBody %} 
 
 {% for car in carsData %}
+
 <tr>
     <td class="has-text-centered is-size-5">{{car.id}}</td>
     <td class="has-text-centered is-size-5">{{car.brand}}</td>  
@@ -14,9 +17,10 @@
     <td class="has-text-centered is-size-5">{{car.ac}}</td>
     <td class="has-text-centered is-size-5">{{car.passengers}}</td>
     <td class="has-text-centered is-size-5">{{car.transmission}}</td>
-    <td class="has-text-centered is-size-5">{% if  %} {{<a href='{{car.picture}}'>IMAGE</a> if {{car.picture}}!=="" else -}}</td>
-    <td class="has-text-centered is-size-5"><a href='cars/{{car.id}}/editCarForm'>EDIT</a>-<a href="/{{car.id}}/delete">DELETE</a></td>
+    <td class="has-text-centered is-size-5">{% if car.picture!=="" %} <a href='{{car.picture}}' target="_blank">IMAGE</a> {% else %} - {% endif %}</td>
+    <td class="has-text-centered is-size-5"><a href='/cars/{{car.id}}/editCarForm'>EDIT</a>-<a href="/cars/deleteCar/{{car.id}}">DELETE</a></td>
 
+    
 </tr>
 
 {% endfor %}

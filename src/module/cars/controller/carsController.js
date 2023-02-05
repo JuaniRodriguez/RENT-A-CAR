@@ -11,9 +11,9 @@ module.exports= class carsController {
         app.get(`${baseRoute}`,this.homePage.bind(this));
         app.get(`${baseRoute}/createCarForm`,this.createCar.bind(this));
         app.post(`${baseRoute}/createCarForm`,this.uploadDataHandler.single('uploadedImage'),this.createdCar.bind(this));
-        app.get(`${baseRoute}/:id/editCar`,this.editCar.bind(this));
-        app.post(`${baseRoute}/:id/editCar`,this.uploadDataHandler.single('uploadedImage'),this.editedCar.bind(this))
-        app.get(`${baseRoute}/:id/deleteCar`,this.deleteCar.bind(this))
+        app.get(`${baseRoute}/:id/editCarForm`,this.editCar.bind(this));
+        app.post(`${baseRoute}/:id/editCarForm`,this.uploadDataHandler.single('uploadedImage'),this.editedCar.bind(this))
+        app.get(`${baseRoute}/deleteCar/:id`,this.deleteCar.bind(this))
     }
     
     async homePage(req,res) {
@@ -50,23 +50,24 @@ module.exports= class carsController {
 
     async editCar(req,res) {
         //debo traer de la base de datos el club, y pasarlo como nunjucks al html//
-        const data= await this.service.getCarById();
+        //const data= await this.carsService.getCarById();
 
-        res.render('editCarForm.html', {data})
+        res.render('cars/view/editCarForm.html'/*, {data}*/)
     }
 
     async editedCar(req,res) {
         //le podria pasar el id como :id
         const data=req.body;
         console.log(data);
-        await this.service.editCar(data.id)
+        await this.carsService.editCar(data.id)
         res.redirect('/')
         
     }
     
 
     async deleteCar(req,res) {
-        const carToDelete= await this.service.deleteCar(req.params['id']);
+        console.log(req.params['id'])
+        const carToDelete= await this.carsService.deleteCar(req.params['id']);
         res.redirect('/')
     }
 }
