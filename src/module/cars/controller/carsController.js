@@ -52,10 +52,17 @@ module.exports= class carsController {
             data
         })
     }
+    //puedo hacer que en el value tenga el link, y que si lo borra, no se mande.
 
     async editedCar(req,res) {
         //le podria pasar el id como :id
         const data=req.body;
+        if(req.file==undefined) {
+            console.log(data);
+        } else {
+            data.picture=`/public/uploads/${req.file.filename}`
+            console.log(data);
+        }
         console.log(data);
         await this.carsService.editCar(data.id)
         res.redirect('/')
