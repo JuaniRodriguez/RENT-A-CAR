@@ -4,7 +4,6 @@ const nunjucks=require('nunjucks');
 require('dotenv').config();
 
 const configureDependencyInjection=require('./config/di.js')
-//const {initApp: initCarModule}=require('./module/cars/carsModule.js')
 const carModule=require('./module/cars/carsModule.js')
 
 const app=express();
@@ -12,6 +11,8 @@ const port=3000;
 
 app.use(express.urlencoded({ extended: true }));  
 app.use('/public', express.static('public'));
+
+
   
 
 nunjucks.configure('src/module', {

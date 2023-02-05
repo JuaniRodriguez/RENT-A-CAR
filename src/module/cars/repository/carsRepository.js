@@ -1,3 +1,5 @@
+const { response } = require("express");
+
 module.exports= class CarRepository {
     constructor(database) {
         this.tableName='cars',
@@ -13,10 +15,10 @@ module.exports= class CarRepository {
             year,
             kms,
             color,
-            airConditioner,
+            ac,
             passengers,
-            manualAutomatic,
-            image
+            transmission,
+            picture
             FROM ${this.tableName}
         `
         return this.database.prepare(carsData).all()
@@ -29,24 +31,25 @@ module.exports= class CarRepository {
                 year,
                 kms,
                 color,
-                airConditioner,
+                ac,
                 passengers,
-                manualAutomatic,
-                image
+                transmission,
+                picture
                 )VALUES(
-                ${carData.brand},
-                ${carData.model},
+                '${carData.brand}',
+                '${carData.model}',
                 ${carData.year},
                 ${carData.kms},
-                ${carData.color},
-                ${carData.airConditioner},
+                '${carData.color}',
+                '${carData.ac}',
                 ${carData.passengers},
-                ${carData.manualAutomatic},
-                ${carData.image}
+                '${carData.transmission}',
+                '${carData.picture}'
                 )
         `
         const result=this.database.prepare(data).run();
-        return getCarById(result.lastInsertRowId)
+        //return getCarById(result.lastInsertRowId)
+        return response.lastInsertRowid
     }
 
     editCar(id,carData) {
@@ -56,10 +59,10 @@ module.exports= class CarRepository {
             year=${carData.year},
             kms=${carData.kms},
             color=${carData.color},
-            airConditioner=${carData.airConditioner},
+            ac=${carData.ac},
             passengers=${carData.passengers},
-            manualAutomatic=${carData.manualAutomatic},
-            image=${carData.image}
+            transmission=${carData.transmission},
+            picture=${carData.picture}
             WHERE id=${id}
         `
         this.database.prepare(updateCar).run();
@@ -80,10 +83,10 @@ module.exports= class CarRepository {
             year,
             kms,
             color,
-            airConditioner,
+            ac,
             passengers,
-            manualAutomatic,
-            image,
+            transmission,
+            picture,
             FROM ${this.tableName} where id=?
         `
         const car=this.database.prepare(carData).get(id)

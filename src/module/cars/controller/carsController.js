@@ -18,21 +18,32 @@ module.exports= class carsController {
     
     async homePage(req,res) {
         //tengo que traer la data de la base para mostrar
-        const carsData=this.carsService.getAllCars();
-        res.render('../view/cars.html', {
-            data: {carsData}
+        const carsData= await this.carsService.getAllCars();
+        console.log(carsData)
+        res.render('cars/view/cars.html', {
+            carsData
         })
         
         //debo renderizar un view de clubs, que extienda de defaultPage.
     }
 
     async createCar(req,res) {
-        res.render('createCarForm.html')
+        res.render('cars/view/createCarForm.html')
     }
 
     async createdCar(req,res) {
         const data=req.body;
-        await this.carsService.addCar(data);
+        if(req.file==undefined) {
+            console.log(data);
+        } else {
+            data.picture=`/public/uploads/${req.file.filename}`
+            console.log(data);
+        }
+        //const data=req.body;
+        //console.log(req.file)
+        //console.log(req.file.filename)
+        //console.log(req.body);
+        await this.carsService.createCar(data);
         res.redirect('/')
 
     }
@@ -47,10 +58,12 @@ module.exports= class carsController {
     async editedCar(req,res) {
         //le podria pasar el id como :id
         const data=req.body;
-        await this.service.editCar(data.id,data)
+        console.log(data);
+        await this.service.editCar(data.id)
         res.redirect('/')
         
     }
+    
 
     async deleteCar(req,res) {
         const carToDelete= await this.service.deleteCar(req.params['id']);

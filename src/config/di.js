@@ -5,13 +5,15 @@ const { default:DIContainer,object,use,factory} = require('rsdi');
 const {carsController,carsService,carsRepository}= require('../module/cars/carsModule.js')
 
 function runDatabase() {
-      return new database(process.env.DB_PATH,{verbose:console.log})
+      return new database('./data/sqliteDatabase.db',{verbose:console.log})
 }
+
+
 
 function uploadImages() {
     const storage=multer.diskStorage({
         destination:function(req,file,cb) {
-            cb(null,process.env.IMG_STORAGE)
+            cb(null,/*process.env.IMG_STORAGE*/"public/uploads")
         },
         filename:function(req,file,cb) {
             cb(null, Date.now() + path.extname(file.originalname));

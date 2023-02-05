@@ -1,21 +1,24 @@
 {% extends "view/defaultPage.html" %} 
 
+
 {% block tableBody %} 
 
+{% for car in carsData %}
 <tr>
-    <td class="has-text-centered is-size-5">{{carsData.id}}</td>
-    <td class="has-text-centered is-size-5">{{carsData.brand}}</td>  
-    <td class="has-text-centered is-size-5">{{carsData.model}}</td>
-    <td class="has-text-centered is-size-5">{{carsData.year}}</td>
-    <td class="has-text-centered is-size-5">{{carsData.kms}}</td>
-    <td class="has-text-centered is-size-5">{{carsData.color}}</td>
-    <td class="has-text-centered is-size-5">{{carsData.airConditioner}}</td>
-    <td class="has-text-centered is-size-5">{{carsData.passengers}}</td>
-    <td class="has-text-centered is-size-5">{{carsData.type}}</td>
-    <td class="has-text-centered is-size-5">{{carsData.image}}</td>
-    <td class="has-text-centered is-size-5"><a href='cars/{{carsData.id}}/editCarForm'>EDIT</a>-<a href="/{{carsData.id}}/delete">DELETE</a></td>
+    <td class="has-text-centered is-size-5">{{car.id}}</td>
+    <td class="has-text-centered is-size-5">{{car.brand}}</td>  
+    <td class="has-text-centered is-size-5">{{car.model}}</td>
+    <td class="has-text-centered is-size-5">{{car.year}}</td>
+    <td class="has-text-centered is-size-5">{{car.kms}}</td>
+    <td class="has-text-centered is-size-5">{{car.color}}</td>
+    <td class="has-text-centered is-size-5">{{car.ac}}</td>
+    <td class="has-text-centered is-size-5">{{car.passengers}}</td>
+    <td class="has-text-centered is-size-5">{{car.transmission}}</td>
+    <td class="has-text-centered is-size-5">{% if  %} {{<a href='{{car.picture}}'>IMAGE</a> if {{car.picture}}!=="" else -}}</td>
+    <td class="has-text-centered is-size-5"><a href='cars/{{car.id}}/editCarForm'>EDIT</a>-<a href="/{{car.id}}/delete">DELETE</a></td>
 
 </tr>
 
+{% endfor %}
 
 {%endblock %}
