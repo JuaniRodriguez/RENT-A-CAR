@@ -76,6 +76,7 @@ module.exports= class CarRepository {
     }
 
     getCarById(id) {
+        console.log(id)
         const carData=`SELECT
             id,
             brand,
@@ -86,11 +87,13 @@ module.exports= class CarRepository {
             ac,
             passengers,
             transmission,
-            picture,
-            FROM ${this.tableName} where id=?
+            picture
+            FROM ${this.tableName} WHERE id=?
         `
+        
         const car=this.database.prepare(carData).get(id)
-        return car;
+        return car
+        
     }
 }
 

@@ -28,4 +28,17 @@
 
 ---DELETE FROM cars WHERE passengers=5
 
-SELECT * FROM cars
+--SELECT * FROM cars
+
+SELECT
+            id,
+            brand,
+            model,
+            year,
+            kms,
+            color,
+            ac,
+            passengers,
+            transmission,
+            picture
+            FROM cars WHERE id=11

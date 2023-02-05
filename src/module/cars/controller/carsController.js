@@ -39,20 +39,18 @@ module.exports= class carsController {
             data.picture=`/public/uploads/${req.file.filename}`
             console.log(data);
         }
-        //const data=req.body;
-        //console.log(req.file)
-        //console.log(req.file.filename)
-        //console.log(req.body);
         await this.carsService.createCar(data);
         res.redirect('/')
-
     }
 
     async editCar(req,res) {
         //debo traer de la base de datos el club, y pasarlo como nunjucks al html//
-        //const data= await this.carsService.getCarById();
-
-        res.render('cars/view/editCarForm.html'/*, {data}*/)
+        const id=req.params['id'];
+        const data= await this.carsService.getCarById(id);
+        console.log(data)
+        res.render('cars/view/editCarForm.html', {
+            data
+        })
     }
 
     async editedCar(req,res) {
