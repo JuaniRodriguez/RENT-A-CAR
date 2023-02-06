@@ -52,7 +52,7 @@ module.exports= class CarRepository {
         return response.lastInsertRowid
     }
 
-    editCar(id,carData) {
+    editCar(carData) {
         const updateCar=`UPDATE ${this.tableName} SET
             brand=${carData.brand},
             model=${carData.model},
@@ -63,7 +63,7 @@ module.exports= class CarRepository {
             passengers=${carData.passengers},
             transmission=${carData.transmission},
             picture=${carData.picture}
-            WHERE id=${id}
+            WHERE id=${carData.id}
         `
         this.database.prepare(updateCar).run();
         

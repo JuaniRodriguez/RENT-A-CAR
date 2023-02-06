@@ -33,9 +33,7 @@ module.exports= class carsController {
 
     async createdCar(req,res) {
         const data=req.body;
-        if(req.file==undefined) {
-            console.log(data);
-        } else {
+        if(req.file!==undefined) {
             data.picture=`/public/uploads/${req.file.filename}`
             console.log(data);
         }
@@ -57,16 +55,12 @@ module.exports= class carsController {
     async editedCar(req,res) {
         //le podria pasar el id como :id
         const data=req.body;
-        if(req.file==undefined) {
-            console.log(data);
-        } else {
+        if(req.file!==undefined) {
             data.picture=`/public/uploads/${req.file.filename}`
-            console.log(data);
-        }
+        } 
         console.log(data);
-        await this.carsService.editCar(data.id)
+        await this.carsService.editCar(data)
         res.redirect('/')
-        
     }
     
 
