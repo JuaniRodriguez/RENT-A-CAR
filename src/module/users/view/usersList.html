@@ -1,0 +1,16 @@
+{% extends "./users.html" %} 
+
+    {% block tableBody %} 
+        {% for user in usersData %}
+            <tr>
+                <td class="has-text-centered is-size-5">{{user.id}}</td>
+                <td class="has-text-centered is-size-5">{{user.name}}</td>
+                <td class="has-text-centered is-size-5">{{user.surname}}</td>  
+                <td class="has-text-centered is-size-5">{{user.age}}</td>
+                <td class="has-text-centered is-size-5">{{user.phone}}</td>
+                <td class="has-text-centered is-size-5">{{user.email}}</td>
+                <td class="has-text-centered is-size-5">{{user.document}}</td>
+                <td class="has-text-centered is-size-5"><a href='/users/{{user.id}}/editUserForm'>EDIT</a>-<a href="/users/deleteUser/{{user.id}}">DELETE</a></td>
+            </tr>
+        {% endfor %}
+    {%endblock %}

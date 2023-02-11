@@ -22,7 +22,6 @@ module.exports= class carsController {
         res.render('cars/view/cars.html', {
             carsData
         })
-        //debo renderizar un view de clubs, que extienda de defaultPage.
     }
 
     async createCar(req,res) {

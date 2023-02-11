@@ -3,7 +3,7 @@ const multer=require('multer');
 const database=require('better-sqlite3');
 const { default:DIContainer,object,use,factory} = require('rsdi');
 const {carsController,carsService,carsRepository}= require('../module/cars/carsModule.js');
-const {usersController}= require('../module/users/usersModule.js')
+const {usersController,usersService,usersRepository}= require('../module/users/usersModule.js')
 
 function runDatabase() {
       return new database('./data/sqliteDatabase.db',{verbose:console.log})
@@ -40,7 +40,9 @@ function addCarsDefinitions(container) {
 
 function addUsersDefinitions(container) {
     container.add({
-        usersController:object(usersController).construct(use('uploadImages'))
+        usersController:object(usersController).construct(use('usersService')),
+        usersService:object(usersService).construct(use('usersRepository')),
+        usersRepository:object(usersRepository).construct(use('runDatabase'))
     })
 }
 

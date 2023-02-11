@@ -13,7 +13,11 @@ module.exports=class UsersController {
     }
 
     async usersPage(req,res) {
-        res.render('users/view/users.html')
+        const usersData=await this.usersService.getAllUsers();
+        res.render('users/view/usersList.html', {
+            usersData
+        }  
+        )
     }
 
     async createUser(req,res) {
@@ -22,32 +26,30 @@ module.exports=class UsersController {
 
     async createdUser(req,res) {
         const data=req.body;
-        await this.UsersService.createUser(data);
-        res.redirect('/')
+        await this.usersService.createUser(data);
+        res.redirect('/users')
     }
 
     async editUser(req,res) {
         const id=req.params['id'];
-        const data= await this.UsersService.getUserById(id);
-        res.render('Users/view/editUserForm.html', {
+        const data= await this.usersService.getUserById(id);
+        res.render('users/view/editUserForm.html', {
             data
         })
     }
 
     async editedUser(req,res) {
         const data=req.body;
-        if(req.file!==undefined) {
-            data.picture=`/public/uploads/${req.file.filename}`
-        } 
-        await this.UsersService.editUser(data);
-        res.redirect('/')
+        console.log(data)
+        await this.usersService.editUser(data);
+        res.redirect('/users')
     }
     
 
     async deleteUser(req,res) {
         console.log(req.params['id'])
-        const UserToDelete= await this.UsersService.deleteUser(req.params['id']);
-        res.redirect('/')
+        await this.usersService.deleteUser(req.params['id']);
+        res.redirect('/users')
     }
 
     

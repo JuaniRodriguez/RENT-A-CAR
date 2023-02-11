@@ -6,25 +6,28 @@ module.exports=class UsersRepository {
 
     getAllUsers() {
         const usersData=`SELECT 
+            id,
             name,
             surname,
             age,
             phone,
             email,
-            document,
+            document
             FROM ${this.tableName}
         `
+           // console.log(this.database.prepare(usersData).all())
         return this.database.prepare(usersData).all()
     }
 
-    adduser(userData) {//tengo que chequear si ya existe el id
+    addUser(userData) {//tengo que chequear si ya existe el id
+        //console.log(userData)
         const data=`INSERT INTO ${this.tableName} (
                 name,
                 surname,
                 age,
                 phone,
                 email,
-                document,
+                document
                 )VALUES(
                 '${userData.name}',
                 '${userData.surname}',
@@ -34,13 +37,18 @@ module.exports=class UsersRepository {
                 '${userData.document}'
                 )
         `
-        const result=this.database.prepare(data).run();
+        //const result=this.database.prepare(data).run();
+        this.database.prepare(data).run()
+
         //return getuserById(result.lastInsertRowId)
-        return response.lastInsertRowid
+        //return response.lastInsertRowid
+        
     }
 
-    edituser(userData) {
-        const newId=Number(userData.id);
+    editUser(userData) {
+        //const newId=Number(userData.id);
+        console.log(userData)
+
         const updateUser=`UPDATE ${this.tableName} SET
             name='${userData.name}',
             surname='${userData.surname}',
@@ -48,10 +56,10 @@ module.exports=class UsersRepository {
             phone='${userData.phone}',
             email='${userData.email}',
             document='${userData.document}'
-            WHERE id=${newId}
+            WHERE id=${userData.id}
         `
         
-        console.log(this.database.prepare(updateUser).run())
+        this.database.prepare(updateUser).run()
     }
 
     deleteUser(id) {
@@ -63,12 +71,13 @@ module.exports=class UsersRepository {
     getUserById(id) {
         console.log(id)
         const userData=`SELECT
+            id,
             name,
             surname,
             age,
             phone,
             email,
-            document,
+            document
             FROM ${this.tableName} WHERE id=?
         `
         

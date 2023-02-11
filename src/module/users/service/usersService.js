@@ -3,23 +3,23 @@ module.exports=class usersService {
         this.usersRepository=usersRepository
     }
 
-    async getUsers() {
+    async getAllUsers() {
         return this.usersRepository.getAllUsers()
     }
-    async createUser() {
-        return this.usersRepository.addUser()
+    async createUser(data) {
+        return this.usersRepository.addUser(data)
     }
 
-    async editUser(UserData) {
-        return await this.UsersRepository.editUser(UserData)
+    async editUser(userData) {
+        return await this.usersRepository.editUser(userData)
     }
 
     async deleteUser(id) {
-        return await this.UsersRepository.deleteUser(id)
+        return await this.usersRepository.deleteUser(id)
     }
 
     async getUserById(id) {
-        return await this.UsersRepository.getUserById(id);
+        return await this.usersRepository.getUserById(id);
     }
 
 } 

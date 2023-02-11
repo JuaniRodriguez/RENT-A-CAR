@@ -57,7 +57,6 @@ module.exports= class CarRepository {
     }
 
     editCar(carData) {
-        const newId=Number(carData.id);
         const updateCar=`UPDATE ${this.tableName} SET
             brand='${carData.brand}',
             model='${carData.model}',
@@ -69,7 +68,7 @@ module.exports= class CarRepository {
             transmission='${carData.transmission}',
             picture='${carData.picture}',
             price='${carData.price}'
-            WHERE id=${newId}
+            WHERE id=${carData.id}
         `
         
         console.log(this.database.prepare(updateCar).run())
