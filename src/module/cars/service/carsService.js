@@ -13,8 +13,8 @@ module.exports= class carsService {
 
     }
 
-    async editCar(id,carData) {
-        return await this.carsRepository.editCar()
+    async editCar(carData) {
+        return await this.carsRepository.editCar(carData)
     }
 
     async deleteCar(id) {

@@ -18,6 +18,7 @@
     <td class="has-text-centered is-size-5">{{car.passengers}}</td>
     <td class="has-text-centered is-size-5">{{car.transmission}}</td>
     <td class="has-text-centered is-size-5">{% if car.picture!=="" %} <a href='{{car.picture}}' target="_blank">IMAGE</a> {% else %} - {% endif %}</td>
+    <td class="has-text-centered is-size-5">{{car.price}}</td>
     <td class="has-text-centered is-size-5"><a href='/cars/{{car.id}}/editCarForm'>EDIT</a>-<a href="/cars/deleteCar/{{car.id}}">DELETE</a></td>
 
     

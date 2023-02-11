@@ -76,7 +76,7 @@
                             <label class="label">AIR CONDITIONER</label>
                                 <div class="control">
                                     <div class="select">
-                                        <select>
+                                        <select name="ac">
                                           <option {% if data.ac==="Yes" %} selected="selected" {% endif %}>Yes</option>
                                           <option {% if data.ac==="No" %} selected="selected" {% endif %}>No</option>
                                         </select>
@@ -85,11 +85,11 @@
                         </div>
                     </div>   
                     <div class="column is-2">
-                        <div class="field">
+                        <div class="field is-pulled-right">
                             <label class="label">TYPE</label>
                                 <div class="control">
                                     <div class="select">
-                                        <select>
+                                        <select name="transmission">
                                           <option {% if data.transmission==="Manual" %} selected="selected" {% endif %}>Manual</option>
                                           <option {% if data.transmission==="Automatic" %} selected="selected" {% endif %}>Automatic</option>
                                         </select>
@@ -114,12 +114,12 @@
                         <div class="field">
                             <label class="label">DEFAULT CAR IMAGE</label>
                             <div class="control">
-                              <input class="input" type="text" name="carImage" value={{data.picture}}>
+                              <input class="input" type="text" name="picture" value={{data.picture}}>
                             </div>
                         </div>
                     </div>
 
-                    <div class="column is-4">
+                    <div class="column is-3">
                         <div class="field">
                             <label class="label">UPLOAD NEW CAR IMAGE</label>
                             <div class="control">
@@ -141,7 +141,15 @@
                                 </div>
                             </div>  
                         </div>
-                    </div>   
+                    </div>
+                    <div class="column is-1">
+                        <div class="field">
+                            <label class="label">PRICE/DAY</label>
+                            <div class="control">
+                              <input class="input" type="number" name="price" value={{data.price}}>
+                            </div>
+                        </div>
+                    </div>       
                 </div>           
             </div>
             <div class="is-flex is-justify-content-center">

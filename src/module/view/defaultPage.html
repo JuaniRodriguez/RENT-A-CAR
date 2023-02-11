@@ -11,7 +11,7 @@
     <h1 class="title is-1 has-text-centered">RENT A CAR </h1>
     <div class="tabs is-centered">
         <ul>
-          <li class="is-active"><a class="is-size-4">Users</a></li>
+          <li class="is-active"><a class="is-size-4" href="/users">Users</a></li>
           <li><a class="is-size-4">Sign up</a></li>
           <li><a class="is-size-4">Reservation</a></li>
           <li><a class="is-size-4" href="/cars/createCarForm">Add car</a></li>
@@ -29,10 +29,11 @@
                     <th class="has-text-centered is-size-4">Year</th>
                     <th class="has-text-centered is-size-4">KMS</th>
                     <th class="has-text-centered is-size-4">Color</th>
-                    <th class="has-text-centered is-size-4">Air Conditioner</th>
+                    <th class="has-text-centered is-size-4">A/C</th>
                     <th class="has-text-centered is-size-4">Passengers</th>
                     <th class="has-text-centered is-size-4">Type</th>
                     <th class="has-text-centered is-size-4">Image</th>
+                    <th class="has-text-centered is-size-4">Price/day</th>
                     <th class="has-text-centered is-size-4">Manage</th>
                     
 
@@ -40,17 +41,7 @@
             </thead>
             <tbody>
               {% block tableBody %} {% endblock %}
-                <!--
-                    asi irian las filas, les tengo que pasar la info  con nunjucks
-                <tr>
-                    <td class="has-text-centered is-size-5">{</td>
-                    <td>1</td>  
-                    <td>1</td>
-                    <td>1</td>
-                    <td>1</td>
 
-                </tr>
-            -->
             </tbody>
         </table>
     </div>

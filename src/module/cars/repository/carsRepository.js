@@ -18,7 +18,8 @@ module.exports= class CarRepository {
             ac,
             passengers,
             transmission,
-            picture
+            picture,
+            price
             FROM ${this.tableName}
         `
         return this.database.prepare(carsData).all()
@@ -34,7 +35,8 @@ module.exports= class CarRepository {
                 ac,
                 passengers,
                 transmission,
-                picture
+                picture,
+                price
                 )VALUES(
                 '${carData.brand}',
                 '${carData.model}',
@@ -44,7 +46,9 @@ module.exports= class CarRepository {
                 '${carData.ac}',
                 ${carData.passengers},
                 '${carData.transmission}',
-                '${carData.picture}'
+                '${carData.picture}',
+                '${carData.price}'
+                
                 )
         `
         const result=this.database.prepare(data).run();
@@ -53,20 +57,22 @@ module.exports= class CarRepository {
     }
 
     editCar(carData) {
+        const newId=Number(carData.id);
         const updateCar=`UPDATE ${this.tableName} SET
-            brand=${carData.brand},
-            model=${carData.model},
-            year=${carData.year},
-            kms=${carData.kms},
-            color=${carData.color},
-            ac=${carData.ac},
-            passengers=${carData.passengers},
-            transmission=${carData.transmission},
-            picture=${carData.picture}
-            WHERE id=${carData.id}
+            brand='${carData.brand}',
+            model='${carData.model}',
+            year='${carData.year}',
+            kms='${carData.kms}',
+            color='${carData.color}',
+            ac='${carData.ac}',
+            passengers='${carData.passengers}',
+            transmission='${carData.transmission}',
+            picture='${carData.picture}',
+            price='${carData.price}'
+            WHERE id=${newId}
         `
-        this.database.prepare(updateCar).run();
         
+        console.log(this.database.prepare(updateCar).run())
     }
 
     deleteCar(id) {
@@ -87,7 +93,8 @@ module.exports= class CarRepository {
             ac,
             passengers,
             transmission,
-            picture
+            picture,
+            price
             FROM ${this.tableName} WHERE id=?
         `
         
@@ -99,5 +106,3 @@ module.exports= class CarRepository {
 
 
 
-
-//add car,edit car,delete car, 

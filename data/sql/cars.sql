@@ -29,16 +29,18 @@
 ---DELETE FROM cars WHERE passengers=5
 
 --SELECT * FROM cars
+--SELECT
+--            id,
+--            brand,
+--            model,
+--            year,
+--            kms,
+--            color,
+--            ac,
+--            passengers,
+--            transmission,
+--            picture
+--            FROM cars WHERE id=11
 
-SELECT
-            id,
-            brand,
-            model,
-            year,
-            kms,
-            color,
-            ac,
-            passengers,
-            transmission,
-            picture
-            FROM cars WHERE id=11
+--ALTER TABLE cars ADD price NUMBER
+--SELECT * FROM cars
