@@ -6,7 +6,7 @@ module.exports= class reservationController {
     reservationRoutes(app) {
         const baseRoute='/reservation';
         app.get(`${baseRoute}`,this.reservationPage.bind(this));
-        //app.get(`${baseRoute}/createUserForm`,this.createUser.bind(this));
+        app.get(`${baseRoute}/reservationForm`,this.reserveCar.bind(this));
         //app.post(`${baseRoute}/createUserForm`,this.createdUser.bind(this));
         //app.get(`${baseRoute}/:id/editUserForm`,this.editUser.bind(this));
         //app.post(`${baseRoute}/:id/editUserForm`,this.editedUser.bind(this));
@@ -17,4 +17,11 @@ module.exports= class reservationController {
         res.render('reservation/view/reservation.html')
         //aca debo agregar la data para mostrar
     }
+
+    async reserveCar(req,res) {
+        res.render('reservation/view/reservationForm.html')
+        //debe recibir data de auto
+    }
+
+
 }
