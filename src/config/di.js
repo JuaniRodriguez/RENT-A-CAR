@@ -4,7 +4,7 @@ const database=require('better-sqlite3');
 const { default:DIContainer,object,use,factory} = require('rsdi');
 const {carsController,carsService,carsRepository}= require('../module/cars/carsModule.js');
 const {usersController,usersService,usersRepository}= require('../module/users/usersModule.js');
-const {reservationController}=require('../module/reservation/reservationModule.js')
+const {rentController}=require('../module/rent/rentModule.js')
 
 function runDatabase() {
       return new database('./data/sqliteDatabase.db',{verbose:console.log})
@@ -47,9 +47,9 @@ function addUsersDefinitions(container) {
     })
 }
 
-function addReservationDefinitions(container) {
+function addRentDefinitions(container) {
     container.add({
-        reservationController:object(reservationController).construct('reservationService')
+        rentController:object(rentController).construct('rentService')
     })
 }
 module.exports= function configureDI() {
@@ -57,7 +57,7 @@ module.exports= function configureDI() {
     addCommonDefinitions(container);
     addCarsDefinitions(container);
     addUsersDefinitions(container);
-    addReservationDefinitions(container);
+    addRentDefinitions(container);
     return container
 }
 

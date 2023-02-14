@@ -1,10 +1,10 @@
-module.exports= class reservationRepository {
+module.exports= class rentRepository {
     constructor(database) {
-       this.tableName='reservation',
+       this.tableName='rent',
        this.database=database 
     }
 
-    getReservations() {
+    getRents() {
         const data={
             car:"toyota"
         }

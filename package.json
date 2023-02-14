@@ -1,7 +1,7 @@
 {
   "scripts": {
     "start":"node src/app.js",
-    "dev": "npm run schema:sync && nodemon -e 'js,njk,html' src/app.js"
+    "dev": "npm run schema:sync && nodemon -e 'js,html' src/app.js"
   },
   "dependencies": {
     "better-sqlite3": "^8.0.1",

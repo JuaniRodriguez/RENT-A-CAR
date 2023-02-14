@@ -6,7 +6,7 @@ require('dotenv').config();
 const configureDependencyInjection=require('./config/di.js')
 const carModule=require('./module/cars/carsModule.js');
 const usersModule=require('./module/users/usersModule.js')
-const reservationModule=require('./module/reservation/reservationModule.js')
+const rentModule=require('./module/rent/rentModule.js')
 
 const app=express();
 const port=3000;
@@ -26,7 +26,7 @@ nunjucks.configure('src/module', {
 const container=configureDependencyInjection(app);
 carModule.initApp(app,container);
 usersModule.initUsers(app,container);
-reservationModule.initReservation(app,container)
+rentModule.initRent(app,container)
 
 const carsController=container.get('carsController');
 app.get('/',carsController.homePage.bind(carsController));
