@@ -8,21 +8,22 @@ module.exports= class CarRepository {
 //ver si deberia crear una tabla
 
     getAllCars() {
-        const carsData=`SELECT 
-            id,
-            brand,
-            model,
-            year,
-            kms,
-            color,
-            ac,
-            passengers,
-            transmission,
-            picture,
-            price
-            FROM ${this.tableName}
-        `
-        return this.database.prepare(carsData).all()
+        //const carsData=`SELECT 
+        //    id,
+        //    brand,
+        //    model,
+        //    year,
+        //    kms,
+        //    color,
+        //    ac,
+        //    passengers,
+        //    transmission,
+        //    picture,
+        //    price
+        //    FROM ${this.tableName}
+        //`
+        //return this.database.prepare(carsData).all()
+        return {id:1,brand:"toyota",model:"corolla",year:2014,kms:1500,color:"red",ac:"yes",passengers:6,transmission:"manual",picture:"hola",price:500}
     }
 
     addCar(carData) {//tengo que chequear si ya existe el id

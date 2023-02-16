@@ -1,6 +1,8 @@
 module.exports= class rentController {
-    constructor(rentService) {
-        this.rentService=rentService
+    constructor(carsService,usersService,rentsService) {
+        this.carsService=carsService,
+        this.usersService=usersService,
+        this.rentsService=rentsService
     }
 
     rentRoutes(app) {
@@ -14,7 +16,10 @@ module.exports= class rentController {
     }
 
     async rentPage(req,res) {
-        res.render('rent/view/rent.html')
+        /*const rentedCars=await this.rentsService.getAllRents();*/
+        res.render('rent/view/rent.html'/*, {
+            rentedCars
+        }*/)
         //aca debo agregar la data para mostrar
     }
 
@@ -22,6 +27,7 @@ module.exports= class rentController {
         res.render('rent/view/rentForm.html')
         //debe recibir data de auto
     }
+    
 
 
 }

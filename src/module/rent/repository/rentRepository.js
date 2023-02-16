@@ -4,10 +4,18 @@ module.exports= class rentRepository {
        this.database=database 
     }
 
-    getRents() {
-        const data={
-            car:"toyota"
-        }
-        return data
+    getAllRents() {
+        const carsData=`SELECT 
+        id,
+        car,
+        name,
+        date,
+        days,
+        price,
+        total,
+        FROM ${this.tableName}
+    `
+    return this.database.prepare(carsData).all()
     }
+
 }
