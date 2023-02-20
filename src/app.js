@@ -6,7 +6,7 @@ require('dotenv').config();
 const configureDependencyInjection=require('./config/di.js')
 const carModule=require('./module/cars/carsModule.js');
 const usersModule=require('./module/users/usersModule.js')
-const rentModule=require('./module/rent/rentModule.js')
+const rentsModule=require('./module/rent/rentsModule.js')
 
 const app=express();
 const port=3000;
@@ -14,8 +14,6 @@ const port=3000;
 app.use(express.urlencoded({ extended: true }));  
 app.use('/public', express.static('public'));
 
-
-  
 
 nunjucks.configure('src/module', {
     autoescape:true,
@@ -26,52 +24,10 @@ nunjucks.configure('src/module', {
 const container=configureDependencyInjection(app);
 carModule.initApp(app,container);
 usersModule.initUsers(app,container);
-rentModule.initRent(app,container)
+rentsModule.initRent(app,container)
 
 const carsController=container.get('carsController');
 app.get('/',carsController.homePage.bind(carsController));
-
-
-
-/*app.get('/',(req,res)=> {
-    const carsData={
-        id:1,
-        brand:'toyota',
-        model:2006,
-        year:2014,
-        KMS:50,
-    }
-    
-    res.render('cars/view/cars.html', {
-        carsData
-        //data: {
-        //    brand:"toyota",
-        //    year:2006,
-        //    color:"red"
-        //}
-    })
-})
-
-app.get('/cars/createCarForm', (req,res)=>  {
-
-    res.render('cars/view/createCarForm.html')
-
-})
-
-app.post('createCarForm',(req,res)=> {
-    console.log(req.body);
-    res.redirect('/')
-})
-
-app.get('cars/:id/editCarForm',(req,res)=>{ 
-    res.render('cars/view/editCarForm.html')
-})
-
-//app.post('cars/:id/editCarForm') {
-//    
-//}
-
-*/
 
 
 app.listen(port)

@@ -1,0 +1,16 @@
+{% extends "./rent.html" %} 
+
+    {% block tableBody %} 
+        {% for rent in rentedCars %}
+            <tr>
+                <td class="has-text-centered is-size-5">{{rent.id}}</td>
+                <td class="has-text-centered is-size-5">{{rent.car}}</td>
+                <td class="has-text-centered is-size-5">{{rent.user}}</td>  
+                <td class="has-text-centered is-size-5">{{rent.date}}</td>
+                <td class="has-text-centered is-size-5">{{rent.days}}</td>
+                <td class="has-text-centered is-size-5">{{rent.price}}</td>
+                <td class="has-text-centered is-size-5"><a href='/rent/{{rent.id}}/editRentForm'>EDIT</a>-<a href="/cars/deleteRent/{{rent.id}}">DELETE</a></td>
+
+            </tr>
+        {% endfor %}
+    {%endblock %}

@@ -1,42 +1,44 @@
-PRAGMA foreign_keys=OFF;
-
+--PRAGMA foreign_keys=OFF;
+--
 CREATE TABLE IF NOT EXISTS cars(
-    id INTEGER PRIMARY KEY,
+    id INTEGER PRIMARY KEY NOT NULL,
     brand TEXT NOT NULL,
     model TEXT NOT NULL,
-    year TEXT NOT NULL,
-    kms NUMBER NOT NULL,
+    year INTEGER NOT NULL,
+    kms INTEGER NOT NULL,
     color TEXT NOT NULL,
     ac TEXT NOT NULL,
-    passengers NUMBER NOT NULL,
+    passengers INTEGER NOT NULL,
     transmission TEXT NOT NULL,
-    picture TEXT NOT NULL
+    picture TEXT NOT NULL,
+    price INTEGER NOT NULL
     
 );
 
 CREATE TABLE IF NOT EXISTS users(
-    id INTEGER PRIMARY KEY,
+    id INTEGER PRIMARY KEY NOT NULL,
     name TEXT NOT NULL,
     surname TEXT NOT NULL,
     age TEXT NOT NULL,
-    phone NUMBER NOT NULL,
+    phone INTEGER NOT NULL,
     email TEXT NOT NULL,
-    document TEXT NOT NULL
+    document INTEGER NOT NULL
 );
 
 CREATE TABLE IF NOT EXISTS rents(
 id INTEGER PRIMARY KEY NOT NULL,
-car TEXT REFERENCES cars(brand),
-user TEXT REFERENCES users(name),
-date NUMBER TEXT NOT NULL,
-days NUMBER NOT NULL,
-price NUMBER NOT NULL
+fk_car TEXT REFERENCES cars(id),
+fk_user TEXT REFERENCES users(id),
+startDate TEXT TEXT NOT NULL,
+finishDate TEXT NOT NULL,
+totalDays NUMBER NOT NULL
 
 );
 
 PRAGMA foreign_keys=ON;
 
---ALTER TABLE cars ADD price NUMBER;
+--SELECT * FROM cars;
 
-INSERT INTO cars(id,brand,model,year,kms,color,ac,passengers,transmission,picture) VALUES(1,"toyota","corolla",2014,1500,"red","yes",6,"manual","hola");
-SELECT * FROM cars;
+--INSERT INTO cars(id,brand,model,year,kms,color,ac,passengers,transmission,picture) VALUES(1,"toyota","corolla",2014,1500,"red","yes",6,"manual","hola");
+--ALTER TABLE cars ADD price NUMBER;
+SELECT * FROM rents;

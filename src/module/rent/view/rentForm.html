@@ -14,6 +14,7 @@
     </div>
     <h1 class="title is-1 has-text-centered">RENT A CAR</h1>
 
+    {% block content %}
     <div class="container">
         <form  action="/rent/rentForm" method="POST">
             <div class="row">
@@ -24,8 +25,9 @@
                             <div class="control">
                                 <div class="select">
                                     <select name="car">
-                                      <option>Yes</option>
-                                      <option>No</option>
+                                        {% for car in cars %}
+                                            <option value={{car.id}}>{{car.brand}} / {{car.model}} / {{car.year}} / {{car.kms}}kms / {{car.color}} / {% if car.ac==="Yes" %} AC {% else %} NO AC {% endif %} / {{car.passengers}} / {{car.transmission}} / $${{car.price}}</option>
+                                        {% endfor %}
                                     </select>
                                 </div>
                             </div>
@@ -37,9 +39,10 @@
                             <label class="label">USER</label>
                             <div class="control">
                                 <div class="select">
-                                    <select name="ac">
-                                      <option>Yes</option>
-                                      <option>No</option>
+                                    <select name="user">
+                                        {% for user in users %}
+                                            <option value={{user.id}}>{{user.name}} {{user.surname}} {{user.document}}</option>
+                                        {% endfor %}
                                     </select>
                                 </div>
                             </div>
@@ -54,7 +57,7 @@
                             <label class="label">START DATE</label>
                             <div class="control">
                                 <div class="select">
-                                    <input class="input" type="date" name="date">
+                                    <input class="input" type="date" name="startDate">
                                 </div>
                             </div>
                         </div>
@@ -62,9 +65,11 @@
                    
                     <div class="column is-6">
                         <div class="field">
-                            <label class="label">TOTAL DAYS</label>
+                            <label class="label">FINISH DATE</label>
                             <div class="control">
-                                <input class="input" type="number" name="days">
+                                <div class="select">
+                                    <input class="input" type="date" name="finishDate">
+                                </div>
                             </div>
                         </div>
                     </div>     
@@ -75,6 +80,6 @@
         </form>
     </div>
 
-   
+    {% endblock %}
 
 </body>
