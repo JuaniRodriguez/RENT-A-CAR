@@ -9,4 +9,17 @@ module.exports=class rentsService {
     async addRent(data) {
         return this.rentsRepository.addRent(data)
     }
+
+    async editRent(data) {
+        return this.rentsRepository.editRent(data)
+    }
+    
+    async deleteRent(id) {
+        return this.rentsRepository.deleteRent(id)
+    }
+
+    async getRentById(id) {
+        return this.rentsRepository.getRentById(id)
+    }
+
 }

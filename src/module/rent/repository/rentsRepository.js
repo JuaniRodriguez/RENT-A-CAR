@@ -20,7 +20,17 @@ module.exports= class rentsRepository {
         const data=`SELECT
             rents.id,
             cars.brand,
+            cars.model,
+            cars.year,
+            cars.kms,
+            cars.color,
+            cars.ac,
+            cars.passengers,
+            cars.transmission,
+            cars.picture,
+            cars.price,
             users.name,
+            users.document,
             rents.startDate,
             rents.finishDate,
             rents.totalDays
@@ -51,6 +61,37 @@ module.exports= class rentsRepository {
     //poner un try catch en caso de que no respete el foreign key
     //const result=this.database.prepare(data).run();
     return this.database.prepare(data).run()
+    }
+
+    editRent(rentData) {
+        const updateRent=`UPDATE ${this.tableName} SET
+            fk_car=${rentData.car},
+            fk_user=${rentData.user},
+            startDate='${rentData.startDate}',
+            finishDate='${rentData.finishDate}',
+            totalDays=${rentData.totalDays}
+            WHERE id=${rentData.id}
+        `
+        
+        console.log(this.database.prepare(updateRent).run())
+    }
+
+    deleteRent(id) {
+        const rentToDelete=`DELETE FROM ${this.tableName} WHERE id=${id}`
+        this.database.prepare(rentToDelete).run();
+    }
+
+    getRentById(id) {
+        const rentData=`SELECT
+            id,
+            startDate,
+            finishDate
+            
+            FROM ${this.tableName} WHERE id=?
+        `
+        
+        const rent=this.database.prepare(rentData).get(id)
+        return rent
     }
 
 }

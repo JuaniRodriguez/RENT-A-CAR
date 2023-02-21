@@ -70,7 +70,7 @@ module.exports= class CarRepository {
             WHERE id=${carData.id}
         `
         
-        console.log(this.database.prepare(updateCar).run())
+        this.database.prepare(updateCar).run()
     }
 
     deleteCar(id) {

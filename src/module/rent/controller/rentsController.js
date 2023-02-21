@@ -11,9 +11,9 @@ module.exports= class rentsController {
         app.get(`${baseRoute}`,this.rentPage.bind(this));
         app.get(`${baseRoute}/rentForm`,this.rentCar.bind(this));
         app.post(`${baseRoute}/rentForm`,this.rentedCar.bind(this));
-        //app.get(`${baseRoute}/:id/editUserForm`,this.editUser.bind(this));
-        //app.post(`${baseRoute}/:id/editUserForm`,this.editedUser.bind(this));
-        //app.get(`${baseRoute}/deleteUser/:id`,this.deleteUser.bind(this))
+        app.get(`${baseRoute}/editRentForm/:id`,this.editRent.bind(this));
+        app.post(`${baseRoute}/editRentForm/:id`,this.editedRent.bind(this));
+        app.get(`${baseRoute}/deleteRent/:id`,this.deleteRent.bind(this))
     }
 
     async rentPage(req,res) {
@@ -50,4 +50,34 @@ module.exports= class rentsController {
         res.redirect('/rent')
     }
 
+    async editRent(req,res) {
+        const id=req.params['id'];
+        const rentData= await this.rentsService.getRentById(id);
+        const cars=await this.carsService.getAllCars();
+        const users=await this.usersService.getAllUsers();
+        res.render('rent/view/editRentForm.html', {
+            rentData,
+            cars,
+            users
+        })
+    }
+
+    async editedRent(req,res) {
+        const editFormData=req.body;
+        const totalDays=((new Date(editFormData.finishDate).getTime())-(new Date(editFormData.startDate).getTime()))/(1000*60*60*24)
+        //const totalDays=Math.ceil(())
+        const newFormData={
+            ...editFormData,
+            totalDays
+            
+        }
+        await this.rentsService.editRent(newFormData);
+        res.redirect('/rent')
+    }
+
+    async deleteRent(req,res) {
+        const id=req.params['id'];
+        await this.rentsService.deleteRent(id);
+        res.redirect('/rent')
+    }
 }

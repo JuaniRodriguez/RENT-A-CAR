@@ -2,14 +2,47 @@
 
     {% block tableBody %} 
         
+    {% if rentedCars!==undefined %}
             <tr>
                 <td class="has-text-centered is-size-5">{{rentedCars.id}}</td>
-                <td class="has-text-centered is-size-5">{{rentedCars.brand}}</td>
+                <td class="has-text-centered is-size-5">
+
+                    <div class="dropdown is-hoverable">
+                        <div class="dropdown-trigger">
+                          <button class="button" aria-haspopup="true" aria-controls="dropdown-menu4">
+                            <span>View</span>
+                            <span class="icon is-small">
+                              <i class="fas fa-angle-down" aria-hidden="true"></i>
+                            </span>
+                          </button>
+                        </div>
+                        <div class="dropdown-menu" id="dropdown-menu4" role="menu">
+                          <div class="dropdown-content">
+                            <div class="dropdown-item">
+                              <li>{{rentedCars.brand}}</li>
+                              <li>{{rentedCars.model}}</li>
+                              <li>{{rentedCars.year}}</li>
+                              <li>{{rentedCars.kms}}KMS</li>
+                              <li>{{rentedCars.color}}</li>
+                              <li>{% if rentedCars.ac==="Yes" %} AC {% else %} NO AC {% endif %}</li>
+                              <li>{{rentedCars.passengers}}</li>
+                              <li>{{rentedCars.transmission}}</li>
+                              <li><a href="{{rentedCars.picture}}" target="blank">IMAGE</a></li>
+                              <li>$${{rentedCars.price}}</li>
+                            </div>
+                          </div>
+                        </div>
+                    </div>
+                
+                </td>
                 <td class="has-text-centered is-size-5">{{rentedCars.name}}</td>  
+                <td class="has-text-centered is-size-5">{{rentedCars.document}}</td>  
                 <td class="has-text-centered is-size-5">{{rentedCars.startDate}}</td>
                 <td class="has-text-centered is-size-5">{{rentedCars.finishDate}}</td>
-                <td class="has-text-centered is-size-5">{{rentedCars.totalDays}}</td>
-                <td class="has-text-centered is-size-5"><a href='/rent/{{rent.id}}/editRentForm'>EDIT</a>-<a href="/cars/deleteRent/{{rent.id}}">DELETE</a></td>
+                <td class="has-text-centered is-size-5">{{rentedCars.totalDays * rentedCars.price}}</td>
+                <td class="has-text-centered is-size-5"><a href='/rent/editRentForm/{{rentedCars.id}}'>EDIT</a>-<a href="/rent/deleteRent/{{rentedCars.id}}">DELETE</a></td>
 
             </tr>
+    
+    {% endif %}
     {%endblock %}
