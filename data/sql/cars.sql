@@ -1,4 +1,4 @@
---PRAGMA foreign_keys=OFF;
+PRAGMA foreign_keys=OFF;
 --
 CREATE TABLE IF NOT EXISTS cars(
     id INTEGER PRIMARY KEY NOT NULL,
@@ -42,3 +42,4 @@ PRAGMA foreign_keys=ON;
 --INSERT INTO cars(id,brand,model,year,kms,color,ac,passengers,transmission,picture) VALUES(1,"toyota","corolla",2014,1500,"red","yes",6,"manual","hola");
 --ALTER TABLE cars ADD price NUMBER;
 SELECT * FROM rents;
+

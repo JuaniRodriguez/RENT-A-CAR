@@ -6,7 +6,7 @@ module.exports= class rentsRepository {
 
     getAllRents() {
         
-        const carsData=`SELECT 
+        /*const carsData=`SELECT 
         id,
         fk_car,
         fk_user,
@@ -16,19 +16,20 @@ module.exports= class rentsRepository {
         
         FROM ${this.tableName}
     `
-    return this.database.prepare(carsData).all()
-        /*const data=`SELECT
-            brand,
-            model,
-            year
-            FROM cars
-            INNER JOIN users
-            USING(id)
+    return this.database.prepare(carsData).all()*/
+        const data=`SELECT
+            rents.id,
+            cars.brand,
+            users.name,
+            rents.startDate,
+            rents.finishDate,
+            rents.totalDays
+            FROM rents
+            INNER JOIN cars USING(id)
+            INNER JOIN users USING(id) 
         `
-        
-        console.log(this.database.prepare(data).get());
+        //console.log(this.database.prepare(data).get());
         return this.database.prepare(data).get()
-        */
     }
 
     addRent(rentData) {

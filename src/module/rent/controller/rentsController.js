@@ -18,10 +18,10 @@ module.exports= class rentsController {
 
     async rentPage(req,res) {
         const rentedCars=await this.rentsService.getAllRents();
-        console.log(rentedCars)
-        res.render('rent/view/rentsList.html'/*, {
+        console.log(rentedCars);
+        res.render('rent/view/rentsList.html', {
             rentedCars
-        }*/)
+        })
         //aca debo agregar la data para mostrar
     }
 
