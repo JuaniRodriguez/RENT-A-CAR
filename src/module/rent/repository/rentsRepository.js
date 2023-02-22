@@ -30,6 +30,7 @@ module.exports= class rentsRepository {
             cars.picture,
             cars.price,
             users.name,
+            users.surname,
             users.document,
             rents.startDate,
             rents.finishDate,

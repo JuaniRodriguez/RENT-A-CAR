@@ -20,23 +20,25 @@
                         <div class="dropdown-menu" id="dropdown-menu4" role="menu">
                           <div class="dropdown-content">
                             <div class="dropdown-item">
-                              <li>{{rent.brand}}</li>
-                              <li>{{rent.model}}</li>
-                              <li>{{rent.year}}</li>
-                              <li>{{rent.kms}}KMS</li>
-                              <li>{{rent.color}}</li>
-                              <li>{% if rent.ac==="Yes" %} AC {% else %} NO AC {% endif %}</li>
-                              <li>{{rent.passengers}}</li>
-                              <li>{{rent.transmission}}</li>
-                              <li><a href="{{rent.picture}}" target="blank">IMAGE</a></li>
-                              <li>$${{rent.price}}</li>
+                              <ol>
+                                <li class="is-size-5">{{rent.brand}}</li>
+                                <li class="is-size-5">{{rent.model}}</li>
+                                <li class="is-size-5">{{rent.year}}</li>
+                                <li class="is-size-5">{{rent.kms}}KMS</li>
+                                <li class="is-size-5">{{rent.color}}</li>
+                                <li class="is-size-5">{% if rent.ac==="Yes" %} AC {% else %} NO AC {% endif %}</li>
+                                <li class="is-size-5">{{rent.passengers}}</li>
+                                <li class="is-size-5">{{rent.transmission}}</li>
+                                <li class="is-size-5"><a href="{{rent.picture}}" target="blank">IMAGE</a></li>
+                                <li class="is-size-5">$${{rent.price}}</li>
+                              </ol>
                             </div>
                           </div>
                         </div>
                     </div>
                 
                 </td>
-                <td class="has-text-centered is-size-5">{{rent.name}}</td>  
+                <td class="has-text-centered is-size-5">{{rent.name}} {{rent.surname}}</td>  
                 <td class="has-text-centered is-size-5">{{rent.document}}</td>  
                 <td class="has-text-centered is-size-5">{{rent.startDate}}</td>
                 <td class="has-text-centered is-size-5">{{rent.finishDate}}</td>

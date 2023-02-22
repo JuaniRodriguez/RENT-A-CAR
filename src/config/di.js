@@ -36,7 +36,7 @@ function addCarsDefinitions(container) {
         carsController:object(carsController).construct(use('carsService'),use('uploadImages')),
         carsService:object(carsService).construct(use('carsRepository')),
         carsRepository:object(carsRepository).construct(use('runDatabase'))
-    })//ver si tengo que correr la base de datos de vuelta
+    })
 }
 
 function addUsersDefinitions(container) {

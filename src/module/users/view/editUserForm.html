@@ -13,9 +13,8 @@
         <a href="/"><i class="fa-solid fa-house"></i></a>
     </div>
     <h1 class="title is-1 has-text-centered">RENT A CAR</h1>
-<!--enctype="multipart/form-data"-->
     <div class="container">
-        <form  action="/users/:id/editUserForm" method="POST" >
+        <form  action="/users/editUserForm/:id" method="POST" >
             
             <div class="row">
                 <div class="columns">
@@ -23,7 +22,7 @@
                         <div class="field">
                             <label class="label">ID</label>
                             <div class="control">
-                              <input class="input" type="text" name="id" value={{data.id}} readonly="readonly">
+                              <input class="input" type="text" name="id" value={{userData.id}} readonly="readonly">
                             </div>
                         </div>
                     </div>
@@ -31,7 +30,7 @@
                         <div class="field">
                             <label class="label">FIRST NAME</label>
                             <div class="control">
-                              <input class="input" type="text" name="name" value={{data.name}}>
+                              <input class="input" type="text" name="name" value={{userData.name}}>
                             </div>
                         </div>
                     </div>
@@ -39,7 +38,7 @@
                         <div class="field">
                             <label class="label">LAST NAME</label>
                             <div class="control">
-                              <input class="input" type="text" name="surname" value={{data.surname}}>
+                              <input class="input" type="text" name="surname" value={{userData.surname}}>
                             </div>
                         </div>
                     </div>
@@ -47,7 +46,7 @@
                         <div class="field">
                             <label class="label">AGE</label>
                             <div class="control">
-                              <input class="input" type="number" name="age" value={{data.age}}>
+                              <input class="input" type="number" name="age" value={{userData.age}}>
                             </div>
                         </div>
                     </div>     
@@ -59,7 +58,7 @@
                         <div class="field">
                             <label class="label">PHONE</label>
                             <div class="control">
-                              <input class="input" type="number" name="phone" value={{data.phone}}>
+                              <input class="input" type="number" name="phone" value={{userData.phone}}>
                             </div>
                         </div>
                     </div>
@@ -67,7 +66,7 @@
                         <div class="field">
                             <label class="label">EMAIL</label>
                             <div class="control">
-                              <input class="input" type="email" name="email" value={{data.email}}>
+                              <input class="input" type="email" name="email" value={{userData.email}}>
                             </div>
                         </div>
                     </div>
@@ -75,7 +74,7 @@
                         <div class="field">
                             <label class="label">DOCUMENT NUMBER</label>
                             <div class="control">
-                              <input class="input" type="numer" name="document" value={{data.document}}>
+                              <input class="input" type="numer" name="document" value={{userData.document}}>
                             </div>
                         </div>
                     </div>   

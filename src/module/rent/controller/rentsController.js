@@ -18,11 +18,9 @@ module.exports= class rentsController {
 
     async rentPage(req,res) {
         const rentedCars=await this.rentsService.getAllRents();
-        console.log(rentedCars);
         res.render('rent/view/rentsList.html', {
             rentedCars
         })
-        //aca debo agregar la data para mostrar
     }
 
     async rentCar(req,res) {
@@ -32,20 +30,16 @@ module.exports= class rentsController {
             cars,
             users
         })
-        //debe recibir data de auto
     }
 
     async rentedCar(req,res) {
         const formData=req.body;
         const totalDays=((new Date(formData.finishDate).getTime())-(new Date(formData.startDate).getTime()))/(1000*60*60*24)
-        //const totalDays=Math.ceil(())
         const newFormData={
             ...formData,
             totalDays
             
         }
-        //console.log(newFormData)
-        //res.end()
         await this.rentsService.addRent(newFormData)
         res.redirect('/rent')
     }
@@ -65,7 +59,6 @@ module.exports= class rentsController {
     async editedRent(req,res) {
         const editFormData=req.body;
         const totalDays=((new Date(editFormData.finishDate).getTime())-(new Date(editFormData.startDate).getTime()))/(1000*60*60*24)
-        //const totalDays=Math.ceil(())
         const newFormData={
             ...editFormData,
             totalDays

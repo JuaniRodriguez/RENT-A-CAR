@@ -14,7 +14,7 @@
     <h1 class="title is-1 has-text-centered">RENT A CAR</h1>
 
     <div class="container">
-        <form action="/cars/:id/editCarForm" method="POST" enctype="multipart/form-data">
+        <form action="/cars/editCarForm/:id" method="POST" enctype="multipart/form-data">
             
             <div class="row">
                 <div class="columns">
@@ -22,7 +22,7 @@
                         <div class="field">
                             <label class="label">ID</label>
                             <div class="control">
-                              <input class="input" type="text" name="id" value={{data.id}} readonly="readonly">
+                              <input class="input" type="text" name="id" value={{carData.id}} readonly="readonly">
                             </div>
                         </div>
                     </div>
@@ -30,7 +30,7 @@
                         <div class="field">
                             <label class="label">BRAND</label>
                             <div class="control">
-                              <input class="input" type="text" name="brand" value={{data.brand}}>
+                              <input class="input" type="text" name="brand" value={{carData.brand}}>
                             </div>
                         </div>
                     </div>
@@ -39,7 +39,7 @@
                         <div class="field">
                             <label class="label">MODEL</label>
                             <div class="control">
-                              <input class="input" type="text" name="model" value={{data.model}}>
+                              <input class="input" type="text" name="model" value={{carData.model}}>
                             </div>
                         </div>
                     </div>
@@ -47,7 +47,7 @@
                         <div class="field">
                             <label class="label">YEAR</label>
                             <div class="control">
-                              <input class="input" type="number" name="year" value={{data.year}}>
+                              <input class="input" type="number" name="year" value={{carData.year}}>
                             </div>
                         </div>
                     </div>     
@@ -59,7 +59,7 @@
                         <div class="field">
                             <label class="label">KMS</label>
                             <div class="control">
-                              <input class="input" type="number" name="kms" value={{data.kms}}>
+                              <input class="input" type="number" name="kms" value={{carData.kms}}>
                             </div>
                         </div>
                     </div>
@@ -67,7 +67,7 @@
                         <div class="field">
                             <label class="label">COLOR</label>
                             <div class="control">
-                              <input class="input" type="text" name="color" value={{data.color}}>
+                              <input class="input" type="text" name="color" value={{carData.color}}>
                             </div>
                         </div>
                     </div>
@@ -77,8 +77,8 @@
                                 <div class="control">
                                     <div class="select">
                                         <select name="ac">
-                                          <option {% if data.ac==="Yes" %} selected="selected" {% endif %}>Yes</option>
-                                          <option {% if data.ac==="No" %} selected="selected" {% endif %}>No</option>
+                                          <option {% if carData.ac==="Yes" %} selected="selected" {% endif %}>Yes</option>
+                                          <option {% if carData.ac==="No" %} selected="selected" {% endif %}>No</option>
                                         </select>
                                     </div>
                                 </div>
@@ -90,8 +90,8 @@
                                 <div class="control">
                                     <div class="select">
                                         <select name="transmission">
-                                          <option {% if data.transmission==="Manual" %} selected="selected" {% endif %}>Manual</option>
-                                          <option {% if data.transmission==="Automatic" %} selected="selected" {% endif %}>Automatic</option>
+                                          <option {% if carData.transmission==="Manual" %} selected="selected" {% endif %}>Manual</option>
+                                          <option {% if carData.transmission==="Automatic" %} selected="selected" {% endif %}>Automatic</option>
                                         </select>
                                     </div>
                                 </div>
@@ -106,7 +106,7 @@
                         <div class="field">
                             <label class="label">PASSENGERS</label>
                             <div class="control">
-                              <input class="input" type="number" name="passengers" value={{data.passengers}}>
+                              <input class="input" type="number" name="passengers" value={{carData.passengers}}>
                             </div>
                         </div>
                     </div>
@@ -114,7 +114,7 @@
                         <div class="field">
                             <label class="label">DEFAULT CAR IMAGE</label>
                             <div class="control">
-                              <input class="input" type="text" name="picture" value={{data.picture}}>
+                              <input class="input" type="text" name="picture" value={{carData.picture}}>
                             </div>
                         </div>
                     </div>
@@ -146,7 +146,7 @@
                         <div class="field">
                             <label class="label">PRICE/DAY</label>
                             <div class="control">
-                              <input class="input" type="number" name="price" value={{data.price}} required>
+                              <input class="input" type="number" name="price" value={{carData.price}} required>
                             </div>
                         </div>
                     </div>       

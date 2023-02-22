@@ -7,8 +7,8 @@ module.exports=class UsersController {
         app.get(`${baseRoute}`,this.usersPage.bind(this));
         app.get(`${baseRoute}/createUserForm`,this.createUser.bind(this));
         app.post(`${baseRoute}/createUserForm`,this.createdUser.bind(this));
-        app.get(`${baseRoute}/:id/editUserForm`,this.editUser.bind(this));
-        app.post(`${baseRoute}/:id/editUserForm`,this.editedUser.bind(this));
+        app.get(`${baseRoute}/editUserForm/:id`,this.editUser.bind(this));
+        app.post(`${baseRoute}/editUserForm/:id`,this.editedUser.bind(this));
         app.get(`${baseRoute}/deleteUser/:id`,this.deleteUser.bind(this))
     }
 
@@ -25,29 +25,27 @@ module.exports=class UsersController {
     }
 
     async createdUser(req,res) {
-        const data=req.body;
-        await this.usersService.createUser(data);
+        const formData=req.body;
+        await this.usersService.createUser(formData);
         res.redirect('/users')
     }
 
     async editUser(req,res) {
         const id=req.params['id'];
-        const data= await this.usersService.getUserById(id);
+        const userData= await this.usersService.getUserById(id);
         res.render('users/view/editUserForm.html', {
-            data
+            userData
         })
     }
 
     async editedUser(req,res) {
-        const data=req.body;
-        console.log(data)
-        await this.usersService.editUser(data);
+        const formData=req.body;
+        await this.usersService.editUser(formData);
         res.redirect('/users')
     }
     
 
     async deleteUser(req,res) {
-        console.log(req.params['id'])
         await this.usersService.deleteUser(req.params['id']);
         res.redirect('/users')
     }
