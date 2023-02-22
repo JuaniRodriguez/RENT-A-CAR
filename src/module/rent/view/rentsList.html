@@ -3,8 +3,9 @@
     {% block tableBody %} 
         
     {% if rentedCars!==undefined %}
+          {% for rent in rentedCars %}
             <tr>
-                <td class="has-text-centered is-size-5">{{rentedCars.id}}</td>
+                <td class="has-text-centered is-size-5">{{rent.id}}</td>
                 <td class="has-text-centered is-size-5">
 
                     <div class="dropdown is-hoverable">
@@ -19,30 +20,30 @@
                         <div class="dropdown-menu" id="dropdown-menu4" role="menu">
                           <div class="dropdown-content">
                             <div class="dropdown-item">
-                              <li>{{rentedCars.brand}}</li>
-                              <li>{{rentedCars.model}}</li>
-                              <li>{{rentedCars.year}}</li>
-                              <li>{{rentedCars.kms}}KMS</li>
-                              <li>{{rentedCars.color}}</li>
-                              <li>{% if rentedCars.ac==="Yes" %} AC {% else %} NO AC {% endif %}</li>
-                              <li>{{rentedCars.passengers}}</li>
-                              <li>{{rentedCars.transmission}}</li>
-                              <li><a href="{{rentedCars.picture}}" target="blank">IMAGE</a></li>
-                              <li>$${{rentedCars.price}}</li>
+                              <li>{{rent.brand}}</li>
+                              <li>{{rent.model}}</li>
+                              <li>{{rent.year}}</li>
+                              <li>{{rent.kms}}KMS</li>
+                              <li>{{rent.color}}</li>
+                              <li>{% if rent.ac==="Yes" %} AC {% else %} NO AC {% endif %}</li>
+                              <li>{{rent.passengers}}</li>
+                              <li>{{rent.transmission}}</li>
+                              <li><a href="{{rent.picture}}" target="blank">IMAGE</a></li>
+                              <li>$${{rent.price}}</li>
                             </div>
                           </div>
                         </div>
                     </div>
                 
                 </td>
-                <td class="has-text-centered is-size-5">{{rentedCars.name}}</td>  
-                <td class="has-text-centered is-size-5">{{rentedCars.document}}</td>  
-                <td class="has-text-centered is-size-5">{{rentedCars.startDate}}</td>
-                <td class="has-text-centered is-size-5">{{rentedCars.finishDate}}</td>
-                <td class="has-text-centered is-size-5">{{rentedCars.totalDays * rentedCars.price}}</td>
-                <td class="has-text-centered is-size-5"><a href='/rent/editRentForm/{{rentedCars.id}}'>EDIT</a>-<a href="/rent/deleteRent/{{rentedCars.id}}">DELETE</a></td>
+                <td class="has-text-centered is-size-5">{{rent.name}}</td>  
+                <td class="has-text-centered is-size-5">{{rent.document}}</td>  
+                <td class="has-text-centered is-size-5">{{rent.startDate}}</td>
+                <td class="has-text-centered is-size-5">{{rent.finishDate}}</td>
+                <td class="has-text-centered is-size-5">{{rent.totalDays * rent.price}}</td>
+                <td class="has-text-centered is-size-5"><a href='/rent/editRentForm/{{rent.id}}'>EDIT</a>-<a href="/rent/deleteRent/{{rent.id}}">DELETE</a></td>
 
             </tr>
-    
+          {% endfor %}
     {% endif %}
     {%endblock %}

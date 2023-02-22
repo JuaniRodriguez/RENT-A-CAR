@@ -35,11 +35,11 @@ module.exports= class rentsRepository {
             rents.finishDate,
             rents.totalDays
             FROM rents
-            INNER JOIN cars USING(id)
-            INNER JOIN users USING(id) 
+            INNER JOIN cars ON rents.fk_car=cars.id
+            INNER JOIN users ON rents.fk_user=users.id; 
         `
         //console.log(this.database.prepare(data).get());
-        return this.database.prepare(data).get()
+        return this.database.prepare(data).all()
     }
 
     addRent(rentData) {
