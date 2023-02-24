@@ -1,14 +1,20 @@
 const path=require('path');
 const multer=require('multer');
 const database=require('better-sqlite3');
+const fs=require('fs');
 const { default:DIContainer,object,use,factory} = require('rsdi');
 const {carsController,carsService,carsRepository}= require('../module/cars/carsModule.js');
 const {usersController,usersService,usersRepository}= require('../module/users/usersModule.js');
 const {rentsController,rentsRepository,rentsService}=require('../module/rent/rentsModule.js')
 
 function runDatabase() {
-      return new database('./data/sqliteDatabase.db',{verbose:console.log})
+    const dataBase=new database(process.env.DB_PATH,{verbose:console.log});
+    const tables = fs.readFileSync(process.env.DB_TABLES_PATH/*'./data/sql/rent.sql'*/, 'utf8');
+    dataBase.exec(tables);
+
+    return dataBase
 }
+
 
 
 
