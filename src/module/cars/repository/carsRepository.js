@@ -1,11 +1,10 @@
-const { response } = require("express");
 
 module.exports= class CarRepository {
     constructor(database) {
         this.tableName='cars',
         this.database=database;
     }
-//ver si deberia crear una tabla
+
 
     getAllCars() {
         const carsData=`SELECT 
@@ -25,7 +24,7 @@ module.exports= class CarRepository {
         return this.database.prepare(carsData).all()
     }
 
-    addCar(carData) {//tengo que chequear si ya existe el id
+    addCar(carData) {
         const data=`INSERT INTO ${this.tableName} (
                 brand,
                 model,
@@ -51,8 +50,7 @@ module.exports= class CarRepository {
                 )
         `
         return this.database.prepare(data).run();
-        //return getCarById(result.lastInsertRowId)
-        //return response.lastInsertRowid
+        
     }
 
     editCar(carData) {
@@ -69,8 +67,9 @@ module.exports= class CarRepository {
             price='${carData.price}'
             WHERE id=${carData.id}
         `
-        
-        this.database.prepare(updateCar).run()
+        //const response=this.database.prepare(updateCar).run();
+        //console.log(response);
+         return this.database.prepare(updateCar).run()
     }
 
     deleteCar(id) {
@@ -80,7 +79,6 @@ module.exports= class CarRepository {
     }
 
     getCarById(id) {
-        console.log(id)
         const carData=`SELECT
             id,
             brand,
@@ -96,7 +94,7 @@ module.exports= class CarRepository {
             FROM ${this.tableName} WHERE id=?
         `
         
-        const car=this.database.prepare(carData).get(id)
+        const car=this.database.prepare(carData).get(id);
         return car
         
     }
