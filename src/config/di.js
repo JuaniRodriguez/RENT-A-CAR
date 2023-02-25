@@ -2,6 +2,8 @@ const path=require('path');
 const multer=require('multer');
 const database=require('better-sqlite3');
 const fs=require('fs');
+const session=require('express-session');
+
 const { default:DIContainer,object,use,factory} = require('rsdi');
 const {carsController,carsService,carsRepository}= require('../module/cars/carsModule.js');
 const {usersController,usersService,usersRepository}= require('../module/users/usersModule.js');
@@ -15,6 +17,17 @@ function runDatabase() {
     return dataBase
 }
 
+function configureSession() {
+    const ONE_WEEK_IN_SECONDS = 604800000;
+  
+    const sessionOptions = {
+      secret: process.env.SESSION_SECRET,
+      resave: false,
+      saveUninitialized: false,
+      cookie: { maxAge: ONE_WEEK_IN_SECONDS },
+    };
+    return session(sessionOptions);
+}
 
 
 
@@ -33,7 +46,8 @@ function uploadImages() {
 function addCommonDefinitions(container) {
     container.add({
         runDatabase:factory(runDatabase),
-        uploadImages:factory(uploadImages)
+        uploadImages:factory(uploadImages),
+        session:factory(configureSession)
     })
 }
 

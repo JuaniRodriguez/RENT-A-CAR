@@ -14,10 +14,13 @@ module.exports=class UsersController {
 
     async usersPage(req,res) {
         const usersData=await this.usersService.getAllUsers();
-        res.render('users/view/usersList.html', {
-            usersData
+        const errors=req.session.errors;
+        res.render('users/view/allUsers.html', {
+            usersData,
+            errors
         }  
         )
+        req.session.errors=[];
     }
 
     async createUser(req,res) {
@@ -26,29 +29,43 @@ module.exports=class UsersController {
 
     async createdUser(req,res) {
         const formData=req.body;
-        await this.usersService.createUser(formData);
+        try {
+            await this.usersService.createUser(formData);
+        } catch(e) {
+            req.session.errors=[e.message]
+        }
         res.redirect('/users')
     }
 
     async editUser(req,res) {
         const id=req.params['id'];
-        const userData= await this.usersService.getUserById(id);
-        res.render('users/view/editUserForm.html', {
-            userData
-        })
+        try {
+            const userData= await this.usersService.getUserById(id);
+            res.render('users/view/editUserForm.html', {
+                userData
+            })
+        } catch(e) {
+            req.session.errors=[e.message]
+        }
     }
 
     async editedUser(req,res) {
         const formData=req.body;
-        await this.usersService.editUser(formData);
+        try {
+            await this.usersService.editUser(formData);
+        }catch(e) {
+            req.session.errors=[e.message]
+        }
         res.redirect('/users')
     }
-    
 
     async deleteUser(req,res) {
-        await this.usersService.deleteUser(req.params['id']);
+        try {
+            await this.usersService.deleteUser(req.params['id']);
+        }catch(e) {
+            req.session.errors=[e.message]
+
+        }
         res.redirect('/users')
     }
-
-    
 }

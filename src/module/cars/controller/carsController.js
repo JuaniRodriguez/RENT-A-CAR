@@ -14,11 +14,15 @@ module.exports= class carsController {
         app.get(`${baseRoute}/deleteCar/:id`,this.deleteCar.bind(this))
     }
     
-    async homePage(req,res) {
+    async homePage(req,res) {   
         const carsData= await this.carsService.getAllCars();
+        const errors=req.session.errors;
+        console.log(errors);
         res.render('cars/view/cars.html', {
-            carsData
+            carsData,
+            errors
         })
+        req.session.errors=[];
     }
 
     async createCar(req,res) {
@@ -30,16 +34,27 @@ module.exports= class carsController {
         if(req.file!==undefined) {
             formData.picture=`/public/uploads/${req.file.filename}`
         }
-        await this.carsService.createCar(formData);
+        try {
+            await this.carsService.createCar(formData);
+        } catch(e) {
+            req.session.errors=[e.message]
+
+        }
+        
         res.redirect('/')
     }
 
     async editCar(req,res) {
         const id=req.params['id'];
-        const carData= await this.carsService.getCarById(id);
-        res.render('cars/view/editCarForm.html', {
-            carData
+        try {
+            const carData= await this.carsService.getCarById(id);
+            res.render('cars/view/editCarForm.html', {
+                carData
         })
+        } catch(e) {
+            req.session.errors=[e.message]
+        }
+        
     }
 
     async editedCar(req,res) {
@@ -47,14 +62,24 @@ module.exports= class carsController {
         if(req.file!==undefined) {
             formData.picture=`/public/uploads/${req.file.filename}`
         } 
-        await this.carsService.editCar(formData);
+        try {
+            await this.carsService.editCar(formData);
+        } catch(e) {
+            req.session.errors=[e.message]   
+        }
         res.redirect('/')
     }
     
 
     async deleteCar(req,res) {
-        const carToDelete= await this.carsService.deleteCar(req.params['id']);
+        try {
+            await this.carsService.deleteCar(req.params['id']);
+        } catch (e) {
+            req.session.errors=[e.message]
+        }
+        
         res.redirect('/')
     }
 }
 
+//que aca chequee si no esta en rents, 

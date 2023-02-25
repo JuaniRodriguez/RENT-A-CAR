@@ -18,18 +18,27 @@ module.exports= class rentsController {
 
     async rentPage(req,res) {
         const rentedCars=await this.rentsService.getAllRents();
-        res.render('rent/view/rentsList.html', {
-            rentedCars
+        const errors=req.session.errors
+        res.render('rent/view/allRents.html', {
+            rentedCars,
+            errors
         })
+        req.session.errors=[];
+
     }
 
     async rentCar(req,res) {
-        const cars=await this.carsService.getAllCars();
-        const users=await this.usersService.getAllUsers();
-        res.render('rent/view/rentForm.html', {
-            cars,
-            users
-        })
+        try {
+            const cars=await this.carsService.getAllCars();
+            const users=await this.usersService.getAllUsers();
+            res.render('rent/view/rentForm.html', {
+                cars,
+                users
+            })
+        }catch(e) {
+            req.session.errors=[e.message]
+        }
+        
     }
 
     async rentedCar(req,res) {
@@ -40,20 +49,30 @@ module.exports= class rentsController {
             totalDays
             
         }
-        await this.rentsService.addRent(newFormData)
+        try {
+            await this.rentsService.addRent(newFormData)
+        }catch(e) {
+            req.session.errors=[e.message]
+        }
         res.redirect('/rent')
     }
 
     async editRent(req,res) {
         const id=req.params['id'];
-        const rentData= await this.rentsService.getRentById(id);
-        const cars=await this.carsService.getAllCars();
-        const users=await this.usersService.getAllUsers();
-        res.render('rent/view/editRentForm.html', {
-            rentData,
-            cars,
-            users
-        })
+        try {
+            const rentData= await this.rentsService.getRentById(id);
+            const cars=await this.carsService.getAllCars();
+            const users=await this.usersService.getAllUsers();
+            res.render('rent/view/editRentForm.html', {
+                rentData,
+                cars,
+                users
+            })
+        } catch(e) {
+            req.session.errors=[e.message]
+
+        }
+        
     }
 
     async editedRent(req,res) {
@@ -64,13 +83,25 @@ module.exports= class rentsController {
             totalDays
             
         }
-        await this.rentsService.editRent(newFormData);
+        try {
+            await this.rentsService.editRent(newFormData);
+        }catch(e) {
+            req.session.errors=[e.message]
+
+        }
         res.redirect('/rent')
+
     }
 
     async deleteRent(req,res) {
         const id=req.params['id'];
-        await this.rentsService.deleteRent(id);
+        try {
+            await this.rentsService.deleteRent(id);
+        }catch(e) {
+            req.session.errors=[e.message]
+
+        }
         res.redirect('/rent')
+
     }
 }

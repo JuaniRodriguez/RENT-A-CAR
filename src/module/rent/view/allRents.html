@@ -1,8 +1,9 @@
 {% extends "./rent.html" %} 
 
-    {% block tableBody %} 
+    {% block rents %} 
         
     {% if rentedCars!==undefined %}
+      <tbody>
           {% for rent in rentedCars %}
             <tr>
                 <td class="has-text-centered is-size-5">{{rent.id}}</td>
@@ -47,5 +48,14 @@
 
             </tr>
           {% endfor %}
+        </tbody>
     {% endif %}
+
+    {% for error in errors %}
+    <div class="notification is-primary">
+            {{error}}
+    </div>
+
+    {% endfor %}
+    
     {%endblock %}

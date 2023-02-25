@@ -1,10 +1,8 @@
-
-
 {% extends "view/defaultPage.html" %} 
 
+{% block cars %} 
 
-{% block tableBody %} 
-
+<tbody>
 {% for car in carsData %}
 <tr>
     <td class="has-text-centered is-size-5">{{car.id}}</td>
@@ -22,7 +20,19 @@
 
     
 </tr>
+{% endfor %}
+</tbody>
+
+{% for error in errors %}
+    <div class="notification is-primary">
+        {% if error=='FOREIGN KEY constraint failed' %}
+           Cannot deleted a rented car
+        {% else %} 
+            {{error}}
+        {% endif %}
+    </div>
 
 {% endfor %}
 
 {%endblock %}
+
