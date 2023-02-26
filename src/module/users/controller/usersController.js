@@ -28,9 +28,9 @@ module.exports=class UsersController {
     }
 
     async createdUser(req,res) {
-        const formData=req.body;
         try {
-            await this.usersService.createUser(formData);
+        const formData=req.body;
+        await this.usersService.createUser(formData);
         } catch(e) {
             req.session.errors=[e.message]
         }
@@ -46,6 +46,7 @@ module.exports=class UsersController {
             })
         } catch(e) {
             req.session.errors=[e.message]
+            res.redirect('/users')
         }
     }
 

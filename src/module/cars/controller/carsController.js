@@ -30,11 +30,11 @@ module.exports= class carsController {
     }
 
     async createdCar(req,res) {
-        const formData=req.body;
-        if(req.file!==undefined) {
-            formData.picture=`/public/uploads/${req.file.filename}`
-        }
         try {
+            const formData=req.body;
+            if(req.file!==undefined) {
+                formData.picture=`/public/uploads/${req.file.filename}`
+            }
             await this.carsService.createCar(formData);
         } catch(e) {
             req.session.errors=[e.message]
@@ -50,19 +50,20 @@ module.exports= class carsController {
             const carData= await this.carsService.getCarById(id);
             res.render('cars/view/editCarForm.html', {
                 carData
-        })
+            })
         } catch(e) {
-            req.session.errors=[e.message]
+            req.session.errors=[e.message];
+            res.redirect('/')
         }
         
     }
 
     async editedCar(req,res) {
-        const formData=req.body;
-        if(req.file!==undefined) {
-            formData.picture=`/public/uploads/${req.file.filename}`
-        } 
         try {
+            const formData=req.body;
+            if(req.file!==undefined) {
+                formData.picture=`/public/uploads/${req.file.filename}`
+            } 
             await this.carsService.editCar(formData);
         } catch(e) {
             req.session.errors=[e.message]   

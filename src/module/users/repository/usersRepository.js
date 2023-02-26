@@ -38,7 +38,7 @@ module.exports=class UsersRepository {
                 )
         `
         //const result=this.database.prepare(data).run();
-        this.database.prepare(data).run()
+       return this.database.prepare(data).run()
 
         //return getuserById(result.lastInsertRowId)
         //return response.lastInsertRowid

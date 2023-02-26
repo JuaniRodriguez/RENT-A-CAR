@@ -10,7 +10,7 @@ beforeEach(() => {
     mockDataBase.exec(migration);
   });
 
-test("it test that a first car is added",()=> {
+test("it tests that a first car is added",()=> {
     const repository=new carsRepository(mockDataBase);
     const carData={brand:"toyota",model:"hilux",year:2022,kms:15000,color:"red",ac:"yes",passengers:6,transmission:"manual",picture:"",price:150};
     const car=repository.addCar(carData);
@@ -19,7 +19,7 @@ test("it test that a first car is added",()=> {
         //porque el run devuelve un objeto con changes y lastInsertRowid
 })
 
-test("it test that is possible to get a car by id",()=> {
+test("it tests that is possible to get a car by id",()=> {
     const repository=new carsRepository(mockDataBase);
     const carData={brand:"toyota",model:"hilux",year:2022,kms:15000,color:"red",ac:"yes",passengers:6,transmission:"manual",picture:"",price:150};
     repository.addCar(carData);
@@ -27,7 +27,7 @@ test("it test that is possible to get a car by id",()=> {
         expect(car.brand).toEqual("toyota");
 })
 
-test("it test that a car can be edited",()=> {
+test("it tests that a car can be edited",()=> {
     const repository=new carsRepository(mockDataBase);
     const carData={brand:"toyota",model:"hilux",year:2022,kms:15000,color:"red",ac:"yes",passengers:6,transmission:"manual",picture:"",price:150};
     repository.addCar(carData);
@@ -37,7 +37,7 @@ test("it test that a car can be edited",()=> {
         expect(car.price).toEqual(200);
 })
 
-test("it test that a car is deleted",()=> {
+test("it tests that a car is deleted",()=> {
     const repository=new carsRepository(mockDataBase);
     const carData={brand:"toyota",model:"hilux",year:2022,kms:15000,color:"red",ac:"yes",passengers:6,transmission:"manual",picture:"",price:150};
     repository.addCar(carData);
@@ -45,12 +45,12 @@ test("it test that a car is deleted",()=> {
     expect(repository.getCarById(1)).toBeUndefined()
 })
 
-test("it test that getAllCars brings all cars",()=> {
+test("it tests that getAllCars brings all cars",()=> {
     const repository=new carsRepository(mockDataBase);
     const carOne={brand:"toyota",model:"hilux",year:2022,kms:15000,color:"red",ac:"yes",passengers:6,transmission:"manual",picture:"",price:150};
     repository.addCar(carOne);
     const carTwo={brand:"toyota",model:"corolla",year:2021,kms:15000,color:"white",ac:"yes",passengers:5,transmission:"manual",picture:"",price:200};
-    repository.addCar(carOne);
+    repository.addCar(carTwo);
     expect(repository.getAllCars()).toHaveLength(2)
 
 })
