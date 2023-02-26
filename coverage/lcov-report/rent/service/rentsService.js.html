@@ -3,7 +3,7 @@
 <html lang="en">
 
 <head>
-    <title>Code coverage report for cars/service/carsService.js</title>
+    <title>Code coverage report for rent/service/rentsService.js</title>
     <meta charset="utf-8" />
     <link rel="stylesheet" href="../../prettify.css" />
     <link rel="stylesheet" href="../../base.css" />
@@ -19,13 +19,13 @@
 <body>
 <div class='wrapper'>
     <div class='pad1'>
-        <h1><a href="../../index.html">All files</a> / <a href="index.html">cars/service</a> carsService.js</h1>
+        <h1><a href="../../index.html">All files</a> / <a href="index.html">rent/service</a> rentsService.js</h1>
         <div class='clearfix'>
             
             <div class='fl pad1y space-right2'>
-                <span class="strong">14.28% </span>
+                <span class="strong">100% </span>
                 <span class="quiet">Statements</span>
-                <span class='fraction'>1/7</span>
+                <span class='fraction'>7/7</span>
             </div>
         
             
@@ -37,16 +37,16 @@
         
             
             <div class='fl pad1y space-right2'>
-                <span class="strong">0% </span>
+                <span class="strong">100% </span>
                 <span class="quiet">Functions</span>
-                <span class='fraction'>0/6</span>
+                <span class='fraction'>6/6</span>
             </div>
         
             
             <div class='fl pad1y space-right2'>
-                <span class="strong">14.28% </span>
+                <span class="strong">100% </span>
                 <span class="quiet">Lines</span>
-                <span class='fraction'>1/7</span>
+                <span class='fraction'>7/7</span>
             </div>
         
             
@@ -61,7 +61,7 @@
             </div>
         </template>
     </div>
-    <div class='status-line low'></div>
+    <div class='status-line high'></div>
     <pre><table class="coverage">
 <tr><td class="line-count quiet"><a name='L1'></a><a href='#L1'>1</a>
 <a name='L2'></a><a href='#L2'>2</a>
@@ -87,61 +87,52 @@
 <a name='L22'></a><a href='#L22'>22</a>
 <a name='L23'></a><a href='#L23'>23</a>
 <a name='L24'></a><a href='#L24'>24</a>
-<a name='L25'></a><a href='#L25'>25</a>
-<a name='L26'></a><a href='#L26'>26</a>
-<a name='L27'></a><a href='#L27'>27</a>
-<a name='L28'></a><a href='#L28'>28</a></td><td class="line-coverage quiet"><span class="cline-any cline-yes">1x</span>
+<a name='L25'></a><a href='#L25'>25</a></td><td class="line-coverage quiet"><span class="cline-any cline-yes">2x</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-yes">1x</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-yes">1x</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">1x</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-yes">1x</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-yes">1x</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-yes">1x</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span></td><td class="text"><pre class="prettyprint lang-js">module.exports= class carsService {
-&nbsp;
-<span class="fstat-no" title="function not covered" >    co</span>nstructor(carsRepository) {
-<span class="cstat-no" title="statement not covered" >        this.carsRepository=carsRepository</span>
+<span class="cline-any cline-neutral">&nbsp;</span></td><td class="text"><pre class="prettyprint lang-js">module.exports=class rentsService {
+    constructor(rentsRepository) {
+        this.rentsRepository=rentsRepository
     }
 &nbsp;
-<span class="fstat-no" title="function not covered" >    as</span>ync getAllCars() {
-<span class="cstat-no" title="statement not covered" >        return this.carsRepository.getAllCars()</span>
+    async getAllRents() {
+        return this.rentsRepository.getAllRents()
+    }
+    async addRent(data) {
+        return this.rentsRepository.addRent(data)
+    }
+&nbsp;
+    async editRent(data) {
+        return this.rentsRepository.editRent(data)
     }
     
-<span class="fstat-no" title="function not covered" >    as</span>ync createCar(carData) {
-<span class="cstat-no" title="statement not covered" >        return this.carsRepository.addCar(carData)</span>
-&nbsp;
+    async deleteRent(id) {
+        return this.rentsRepository.deleteRent(id)
     }
 &nbsp;
-<span class="fstat-no" title="function not covered" >    as</span>ync editCar(carData) {
-<span class="cstat-no" title="statement not covered" >        return await this.carsRepository.editCar(carData)</span>
-    }
-&nbsp;
-<span class="fstat-no" title="function not covered" >    as</span>ync deleteCar(id) {
-<span class="cstat-no" title="statement not covered" >        return await this.carsRepository.deleteCar(id)</span>
-    }
-&nbsp;
-<span class="fstat-no" title="function not covered" >    as</span>ync getCarById(id) {
-<span class="cstat-no" title="statement not covered" >        return await this.carsRepository.getCarById(id);</span>
+    async getRentById(id) {
+        return this.rentsRepository.getRentById(id)
     }
 &nbsp;
 }</pre></td></tr></table></pre>

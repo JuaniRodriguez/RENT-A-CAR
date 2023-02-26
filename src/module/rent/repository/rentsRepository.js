@@ -74,7 +74,7 @@ module.exports= class rentsRepository {
             WHERE id=${rentData.id}
         `
         
-        console.log(this.database.prepare(updateRent).run())
+        return this.database.prepare(updateRent).run()
     }
 
     deleteRent(id) {

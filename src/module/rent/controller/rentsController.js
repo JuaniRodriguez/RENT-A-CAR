@@ -36,20 +36,22 @@ module.exports= class rentsController {
                 users
             })
         }catch(e) {
-            req.session.errors=[e.message]
+            req.session.errors=[e.message];
+            res.redirect('/rent')
         }
         
     }
 
     async rentedCar(req,res) {
-        const formData=req.body;
-        const totalDays=((new Date(formData.finishDate).getTime())-(new Date(formData.startDate).getTime()))/(1000*60*60*24)
-        const newFormData={
-            ...formData,
-            totalDays
-            
-        }
+
         try {
+            const formData=req.body;
+            const totalDays=((new Date(formData.finishDate).getTime())-(new Date(formData.startDate).getTime()))/(1000*60*60*24)
+            const newFormData={
+                ...formData,
+                totalDays
+                
+            }
             await this.rentsService.addRent(newFormData)
         }catch(e) {
             req.session.errors=[e.message]
@@ -70,20 +72,20 @@ module.exports= class rentsController {
             })
         } catch(e) {
             req.session.errors=[e.message]
+            res.redirect('/rent')
 
         }
         
     }
 
     async editedRent(req,res) {
-        const editFormData=req.body;
-        const totalDays=((new Date(editFormData.finishDate).getTime())-(new Date(editFormData.startDate).getTime()))/(1000*60*60*24)
-        const newFormData={
-            ...editFormData,
-            totalDays
-            
-        }
         try {
+            const editFormData=req.body;
+            const totalDays=((new Date(editFormData.finishDate).getTime())-(new Date(editFormData.startDate).getTime()))/(1000*60*60*24)
+            const newFormData={
+                ...editFormData,
+                totalDays
+            }
             await this.rentsService.editRent(newFormData);
         }catch(e) {
             req.session.errors=[e.message]

@@ -48,7 +48,7 @@ test("it tests that createCarForm is render",async()=> {
     expect(mockRender).toHaveBeenCalledWith('cars/view/createCarForm.html')
 })
 
-test("it tests createCar function with file and correct data",async()=> {
+test("it tests createdCar function with file and correct data",async()=> {
     const mockRedirect=jest.fn();
     const carData={brand:"toyota",model:"hilux",year:2022,kms:15000,color:"red",ac:"yes",passengers:6,transmission:"manual",picture:"",price:150};
     await controller.createdCar({session:{errors:[]},body:carData,file:{filename:"picture.png"}},{redirect:mockRedirect});
@@ -57,24 +57,7 @@ test("it tests createCar function with file and correct data",async()=> {
     expect(mockRedirect).toHaveBeenCalledTimes(1)
     expect(mockRedirect).toHaveBeenCalledWith('/')
 })
-//ver si elimino el req,file, no salta el code coverage.
-/*
-test("it tests createCar function with correct data but without file",async()=> {
-    const mockRedirect=jest.fn();
-    await controller.createdCar({session:{errors:[]},body:{}},{redirect:mockRedirect});
-    expect(mockService.createCar).toHaveBeenCalledWith({picture:""});
-    expect(mockRedirect).toHaveBeenCalledTimes(1)
-    expect(mockRedirect).toHaveBeenCalledWith('/')
-})*/
 
-
-/*test("it tests createCar function with error",async()=> {
-    const mockRender=jest.fn();
-    await controller.createdCar({session:{errors:["error"]},body:undefined,file:undefined},{redirect:mockRender});
-    expect(mockService.createCar).toHaveBeenCalledWith(undefined);
-    expect(mockRender).toHaveBeenCalledTimes(1)
-    expect(mockRender).toHaveBeenCalledWith('/')
-})*/
 test("it tests createdCar function with exception",async()=> {
     const mockRedirect=jest.fn();
     mockService.createCar.mockImplementationOnce(()=>{
