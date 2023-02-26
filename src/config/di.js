@@ -11,7 +11,7 @@ const {rentsController,rentsRepository,rentsService}=require('../module/rent/ren
 
 function runDatabase() {
     const dataBase=new database(process.env.DB_PATH,{verbose:console.log});
-    const tables = fs.readFileSync(process.env.DB_TABLES_PATH/*'./data/sql/rent.sql'*/, 'utf8');
+    const tables = fs.readFileSync(process.env.DB_TABLES_PATH, 'utf8');
     dataBase.exec(tables);
 
     return dataBase
@@ -30,11 +30,10 @@ function configureSession() {
 }
 
 
-
 function uploadImages() {
     const storage=multer.diskStorage({
         destination:function(req,file,cb) {
-            cb(null,/*process.env.IMG_STORAGE*/"public/uploads")
+            cb(null,"public/uploads")
         },
         filename:function(req,file,cb) {
             cb(null, Date.now() + path.extname(file.originalname));

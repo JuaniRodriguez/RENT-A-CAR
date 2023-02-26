@@ -83,4 +83,3 @@ module.exports= class carsController {
     }
 }
 
-//que aca chequee si no esta en rents, 

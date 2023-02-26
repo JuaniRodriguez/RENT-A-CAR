@@ -24,7 +24,7 @@ test("it tests that is possible to get a car by id",()=> {
     const carData={brand:"toyota",model:"hilux",year:2022,kms:15000,color:"red",ac:"yes",passengers:6,transmission:"manual",picture:"",price:150};
     repository.addCar(carData);
     const car=repository.getCarById(1);
-        expect(car.brand).toEqual("toyota");
+        expect(car).toEqual({id:1,...carData});
 })
 
 test("it tests that a car can be edited",()=> {

@@ -33,11 +33,3 @@ app.get('/',carsController.homePage.bind(carsController));
 
 app.listen(port)
 
-
-/*
-me gustaria agregar imagen en tamano chico, y con un hover que se agrande
-cuando agrego la info de un auto, que de la opcion de editar, eliminar, reservar
-Creo que la tabla que cree, deberia traerla de la base de datos que creo, en realidad solo la info de las filas.
-Creo que todo lo que va dentro del body, lo deberia pasar por nunjucks, no en default.html
-
-*/

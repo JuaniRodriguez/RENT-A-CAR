@@ -2,7 +2,8 @@
   "scripts": {
     "start": "node src/app.js",
     "dev": "nodemon -e 'js,html' src/app.js",
-    "test": "jest"
+    "test": "jest --coverage"
+    
   },
   "dependencies": {
     "better-sqlite3": "^8.0.1",

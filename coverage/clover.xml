@@ -1,13 +1,50 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<coverage generated="1677444955425" clover="3.2.0">
-  <project timestamp="1677444955425" name="All files">
-    <metrics statements="141" coveredstatements="115" conditionals="4" coveredconditionals="4" methods="46" coveredmethods="32" elements="191" coveredelements="151" complexity="0" loc="141" ncloc="141" packages="7" files="7" classes="7"/>
-    <package name="cars.controller">
+<coverage generated="1677454047826" clover="3.2.0">
+  <project timestamp="1677454047826" name="All files">
+    <metrics statements="89" coveredstatements="87" conditionals="4" coveredconditionals="4" methods="25" coveredmethods="23" elements="118" coveredelements="114" complexity="0" loc="89" ncloc="89" packages="4" files="4" classes="4"/>
+    <package name="config">
+      <metrics statements="31" coveredstatements="29" conditionals="0" coveredconditionals="0" methods="10" coveredmethods="8"/>
+      <file name="di.js" path="C:\Users\rodri\Desktop\juanu\PROGRAMACION\ARGENTINA PROGRAMA\RENT-A-CAR\src\config\di.js">
+        <metrics statements="31" coveredstatements="29" conditionals="0" coveredconditionals="0" methods="10" coveredmethods="8"/>
+        <line num="1" count="1" type="stmt"/>
+        <line num="2" count="1" type="stmt"/>
+        <line num="3" count="1" type="stmt"/>
+        <line num="4" count="1" type="stmt"/>
+        <line num="5" count="1" type="stmt"/>
+        <line num="7" count="1" type="stmt"/>
+        <line num="8" count="1" type="stmt"/>
+        <line num="9" count="1" type="stmt"/>
+        <line num="10" count="1" type="stmt"/>
+        <line num="13" count="1" type="stmt"/>
+        <line num="14" count="1" type="stmt"/>
+        <line num="15" count="1" type="stmt"/>
+        <line num="17" count="1" type="stmt"/>
+        <line num="21" count="1" type="stmt"/>
+        <line num="23" count="1" type="stmt"/>
+        <line num="29" count="1" type="stmt"/>
+        <line num="34" count="1" type="stmt"/>
+        <line num="36" count="0" type="stmt"/>
+        <line num="39" count="0" type="stmt"/>
+        <line num="42" count="1" type="stmt"/>
+        <line num="46" count="1" type="stmt"/>
+        <line num="54" count="1" type="stmt"/>
+        <line num="62" count="1" type="stmt"/>
+        <line num="70" count="1" type="stmt"/>
+        <line num="77" count="1" type="stmt"/>
+        <line num="78" count="1" type="stmt"/>
+        <line num="79" count="1" type="stmt"/>
+        <line num="80" count="1" type="stmt"/>
+        <line num="81" count="1" type="stmt"/>
+        <line num="82" count="1" type="stmt"/>
+        <line num="83" count="1" type="stmt"/>
+      </file>
+    </package>
+    <package name="module.cars.controller">
       <metrics statements="39" coveredstatements="39" conditionals="4" coveredconditionals="4" methods="8" coveredmethods="8"/>
       <file name="carsController.js" path="C:\Users\rodri\Desktop\juanu\PROGRAMACION\ARGENTINA PROGRAMA\RENT-A-CAR\src\module\cars\controller\carsController.js">
         <metrics statements="39" coveredstatements="39" conditionals="4" coveredconditionals="4" methods="8" coveredmethods="8"/>
-        <line num="1" count="1" type="stmt"/>
-        <line num="3" count="1" type="stmt"/>
+        <line num="1" count="3" type="stmt"/>
+        <line num="3" count="2" type="stmt"/>
         <line num="8" count="1" type="stmt"/>
         <line num="9" count="1" type="stmt"/>
         <line num="10" count="1" type="stmt"/>
@@ -47,142 +84,35 @@
         <line num="82" count="2" type="stmt"/>
       </file>
     </package>
-    <package name="cars.repository">
-      <metrics statements="13" coveredstatements="4" conditionals="0" coveredconditionals="0" methods="6" coveredmethods="2"/>
+    <package name="module.cars.repository">
+      <metrics statements="13" coveredstatements="13" conditionals="0" coveredconditionals="0" methods="6" coveredmethods="6"/>
       <file name="carsRepository.js" path="C:\Users\rodri\Desktop\juanu\PROGRAMACION\ARGENTINA PROGRAMA\RENT-A-CAR\src\module\cars\repository\carsRepository.js">
-        <metrics statements="13" coveredstatements="4" conditionals="0" coveredconditionals="0" methods="6" coveredmethods="2"/>
-        <line num="2" count="2" type="stmt"/>
+        <metrics statements="13" coveredstatements="13" conditionals="0" coveredconditionals="0" methods="6" coveredmethods="6"/>
+        <line num="2" count="4" type="stmt"/>
         <line num="4" count="6" type="stmt"/>
-        <line num="10" count="0" type="stmt"/>
-        <line num="24" count="0" type="stmt"/>
+        <line num="10" count="1" type="stmt"/>
+        <line num="24" count="1" type="stmt"/>
         <line num="28" count="6" type="stmt"/>
         <line num="52" count="6" type="stmt"/>
-        <line num="57" count="0" type="stmt"/>
-        <line num="72" count="0" type="stmt"/>
-        <line num="76" count="0" type="stmt"/>
-        <line num="77" count="0" type="stmt"/>
-        <line num="82" count="0" type="stmt"/>
-        <line num="97" count="0" type="stmt"/>
-        <line num="98" count="0" type="stmt"/>
-      </file>
-    </package>
-    <package name="cars.service">
-      <metrics statements="7" coveredstatements="1" conditionals="0" coveredconditionals="0" methods="6" coveredmethods="0"/>
-      <file name="carsService.js" path="C:\Users\rodri\Desktop\juanu\PROGRAMACION\ARGENTINA PROGRAMA\RENT-A-CAR\src\module\cars\service\carsService.js">
-        <metrics statements="7" coveredstatements="1" conditionals="0" coveredconditionals="0" methods="6" coveredmethods="0"/>
-        <line num="1" count="1" type="stmt"/>
-        <line num="4" count="0" type="stmt"/>
-        <line num="8" count="0" type="stmt"/>
-        <line num="12" count="0" type="stmt"/>
-        <line num="17" count="0" type="stmt"/>
-        <line num="21" count="0" type="stmt"/>
-        <line num="25" count="0" type="stmt"/>
-      </file>
-    </package>
-    <package name="rent.controller">
-      <metrics statements="46" coveredstatements="46" conditionals="0" coveredconditionals="0" methods="8" coveredmethods="8"/>
-      <file name="rentsController.js" path="C:\Users\rodri\Desktop\juanu\PROGRAMACION\ARGENTINA PROGRAMA\RENT-A-CAR\src\module\rent\controller\rentsController.js">
-        <metrics statements="46" coveredstatements="46" conditionals="0" coveredconditionals="0" methods="8" coveredmethods="8"/>
-        <line num="2" count="1" type="stmt"/>
-        <line num="4" count="1" type="stmt"/>
-        <line num="10" count="1" type="stmt"/>
-        <line num="11" count="1" type="stmt"/>
-        <line num="12" count="1" type="stmt"/>
-        <line num="13" count="1" type="stmt"/>
-        <line num="14" count="1" type="stmt"/>
-        <line num="15" count="1" type="stmt"/>
-        <line num="16" count="1" type="stmt"/>
-        <line num="20" count="1" type="stmt"/>
-        <line num="21" count="1" type="stmt"/>
-        <line num="22" count="1" type="stmt"/>
-        <line num="26" count="1" type="stmt"/>
-        <line num="31" count="2" type="stmt"/>
-        <line num="32" count="2" type="stmt"/>
-        <line num="33" count="2" type="stmt"/>
-        <line num="34" count="2" type="stmt"/>
-        <line num="39" count="1" type="stmt"/>
-        <line num="40" count="1" type="stmt"/>
-        <line num="47" count="1" type="stmt"/>
-        <line num="48" count="1" type="stmt"/>
-        <line num="49" count="1" type="stmt"/>
-        <line num="50" count="1" type="stmt"/>
-        <line num="55" count="1" type="stmt"/>
         <line num="57" count="1" type="stmt"/>
-        <line num="59" count="1" type="stmt"/>
-        <line num="63" count="2" type="stmt"/>
-        <line num="64" count="2" type="stmt"/>
-        <line num="65" count="2" type="stmt"/>
-        <line num="66" count="2" type="stmt"/>
-        <line num="67" count="2" type="stmt"/>
-        <line num="68" count="2" type="stmt"/>
-        <line num="74" count="1" type="stmt"/>
-        <line num="75" count="1" type="stmt"/>
-        <line num="82" count="2" type="stmt"/>
-        <line num="83" count="2" type="stmt"/>
-        <line num="84" count="2" type="stmt"/>
-        <line num="85" count="1" type="stmt"/>
-        <line num="89" count="1" type="stmt"/>
-        <line num="91" count="2" type="stmt"/>
-        <line num="94" count="2" type="stmt"/>
-        <line num="99" count="2" type="stmt"/>
-        <line num="100" count="2" type="stmt"/>
-        <line num="101" count="2" type="stmt"/>
-        <line num="103" count="1" type="stmt"/>
-        <line num="106" count="2" type="stmt"/>
-      </file>
-    </package>
-    <package name="rent.repository">
-      <metrics statements="14" coveredstatements="14" conditionals="0" coveredconditionals="0" methods="6" coveredmethods="6"/>
-      <file name="rentsRepository.js" path="C:\Users\rodri\Desktop\juanu\PROGRAMACION\ARGENTINA PROGRAMA\RENT-A-CAR\src\module\rent\repository\rentsRepository.js">
-        <metrics statements="14" coveredstatements="14" conditionals="0" coveredconditionals="0" methods="6" coveredmethods="6"/>
-        <line num="1" count="2" type="stmt"/>
-        <line num="3" count="5" type="stmt"/>
-        <line num="20" count="1" type="stmt"/>
-        <line num="43" count="1" type="stmt"/>
-        <line num="47" count="6" type="stmt"/>
-        <line num="48" count="6" type="stmt"/>
-        <line num="64" count="6" type="stmt"/>
-        <line num="68" count="1" type="stmt"/>
+        <line num="72" count="1" type="stmt"/>
+        <line num="76" count="1" type="stmt"/>
         <line num="77" count="1" type="stmt"/>
-        <line num="81" count="1" type="stmt"/>
-        <line num="82" count="1" type="stmt"/>
-        <line num="86" count="3" type="stmt"/>
-        <line num="94" count="3" type="stmt"/>
-        <line num="95" count="3" type="stmt"/>
+        <line num="82" count="3" type="stmt"/>
+        <line num="97" count="3" type="stmt"/>
+        <line num="98" count="3" type="stmt"/>
       </file>
     </package>
-    <package name="rent.service">
-      <metrics statements="7" coveredstatements="7" conditionals="0" coveredconditionals="0" methods="6" coveredmethods="6"/>
-      <file name="rentsService.js" path="C:\Users\rodri\Desktop\juanu\PROGRAMACION\ARGENTINA PROGRAMA\RENT-A-CAR\src\module\rent\service\rentsService.js">
-        <metrics statements="7" coveredstatements="7" conditionals="0" coveredconditionals="0" methods="6" coveredmethods="6"/>
+    <package name="module.rent">
+      <metrics statements="6" coveredstatements="6" conditionals="0" coveredconditionals="0" methods="1" coveredmethods="1"/>
+      <file name="rentsModule.js" path="C:\Users\rodri\Desktop\juanu\PROGRAMACION\ARGENTINA PROGRAMA\RENT-A-CAR\src\module\rent\rentsModule.js">
+        <metrics statements="6" coveredstatements="6" conditionals="0" coveredconditionals="0" methods="1" coveredmethods="1"/>
         <line num="1" count="2" type="stmt"/>
-        <line num="3" count="1" type="stmt"/>
+        <line num="2" count="2" type="stmt"/>
+        <line num="3" count="2" type="stmt"/>
         <line num="7" count="1" type="stmt"/>
-        <line num="10" count="1" type="stmt"/>
-        <line num="14" count="1" type="stmt"/>
-        <line num="18" count="1" type="stmt"/>
-        <line num="22" count="1" type="stmt"/>
-      </file>
-    </package>
-    <package name="users.repository">
-      <metrics statements="15" coveredstatements="4" conditionals="0" coveredconditionals="0" methods="6" coveredmethods="2"/>
-      <file name="usersRepository.js" path="C:\Users\rodri\Desktop\juanu\PROGRAMACION\ARGENTINA PROGRAMA\RENT-A-CAR\src\module\users\repository\usersRepository.js">
-        <metrics statements="15" coveredstatements="4" conditionals="0" coveredconditionals="0" methods="6" coveredmethods="2"/>
-        <line num="1" count="1" type="stmt"/>
-        <line num="3" count="5" type="stmt"/>
-        <line num="8" count="0" type="stmt"/>
-        <line num="19" count="0" type="stmt"/>
-        <line num="24" count="5" type="stmt"/>
-        <line num="41" count="5" type="stmt"/>
-        <line num="50" count="0" type="stmt"/>
-        <line num="52" count="0" type="stmt"/>
-        <line num="62" count="0" type="stmt"/>
-        <line num="66" count="0" type="stmt"/>
-        <line num="67" count="0" type="stmt"/>
-        <line num="72" count="0" type="stmt"/>
-        <line num="73" count="0" type="stmt"/>
-        <line num="84" count="0" type="stmt"/>
-        <line num="85" count="0" type="stmt"/>
+        <line num="8" count="1" type="stmt"/>
+        <line num="11" count="2" type="stmt"/>
       </file>
     </package>
   </project>
