@@ -1,6 +1,6 @@
 RENT A CAR
-Rental car CRUD, with cars,users,rent.
 
+Rental car CRUD, with cars,users,rent modules. Using HTML, CSS, JS, Nunjucks, Bulma, Node.JS, SQLite.
 
 
 
