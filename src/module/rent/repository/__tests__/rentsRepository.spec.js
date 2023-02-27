@@ -66,6 +66,3 @@ test("it tests that getAllRents brings all rents",()=> {
 })
 
 
-/*
-npm run test -t rentsRepository.spec.js
-*/

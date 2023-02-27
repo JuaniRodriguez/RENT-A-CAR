@@ -18,7 +18,3 @@ test("it test initApp function",()=> {
     expect(mockCarsController.carRoutes).toHaveBeenCalledTimes(1);
 })
 
-/*
-npm run test -t carsModule.spec.js
-*/
-

@@ -32,7 +32,6 @@ test("it tests usersPage render",async ()=> {
         usersData:[],
         errors:[]
     })
-    //expect(mockService.getAllUsers).toHaveBeenCalledTimes(1);
 
 })
 
@@ -133,6 +132,3 @@ test("it tests deleteUser function with exception",async()=> {
     expect(req.session.errors).not.toEqual([])
 })
 
-/*
-npm run test -t usersController.spec.js
-*/

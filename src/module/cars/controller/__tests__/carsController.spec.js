@@ -35,7 +35,7 @@ test("it tests homePage render",async ()=> {
         carsData:[],
         errors:[]
     })
-    //expect(mockService.getAllCars).toHaveBeenCalledTimes(1);
+   
 
 })
 
@@ -140,6 +140,3 @@ test("it tests deleteCar function with exception",async()=> {
     expect(req.session.errors).not.toEqual([])
 })
 
-/*
-npm run test -t carsController.spec.js
-*/

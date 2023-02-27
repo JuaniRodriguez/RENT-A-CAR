@@ -18,7 +18,4 @@ test("it test initApp function",()=> {
     expect(mockRentsController.rentRoutes).toHaveBeenCalledTimes(1);
 })
 
-/*
-npm run test -t rentsModule.spec.js
-*/
 

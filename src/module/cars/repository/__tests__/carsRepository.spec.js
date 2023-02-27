@@ -55,6 +55,3 @@ test("it tests that getAllCars brings all cars",()=> {
 
 })
 
-/*
-npm run test -t carsRepository.spec.js 
-*/

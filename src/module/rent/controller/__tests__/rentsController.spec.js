@@ -142,6 +142,3 @@ test("it tests deleteRent function with exception",async()=> {
     expect(req.session.errors).not.toEqual([])
 })
 
-/*
-npm run test -t rentsController.spec.js
-*/

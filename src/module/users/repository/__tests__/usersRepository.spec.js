@@ -56,11 +56,3 @@ test("it tests that getAllUsers brings all users",()=> {
     expect(repository.getAllUsers()).toHaveLength(2)
 
 })
-
-
-/*
-npm run test -t usersRepository.spec.js
-*/
-
-
-

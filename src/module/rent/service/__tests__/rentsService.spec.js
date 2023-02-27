@@ -35,6 +35,3 @@ test("it test that getRentById from repository is called once",()=> {
     expect(mockRepository.getRentById).toHaveBeenCalledTimes(1)
 })
 
-/*
-npm run test -t rentsService.spec.js
-*/
