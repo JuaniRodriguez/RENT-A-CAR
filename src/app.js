@@ -22,7 +22,7 @@ nunjucks.configure('src/module', {
 
 
 const container=configureDependencyInjection(app);
-//app.use(container.get('session'));
+app.use(container.get('session'));
 carModule.initApp(app,container);
 usersModule.initUsers(app,container);
 rentsModule.initRent(app,container)
