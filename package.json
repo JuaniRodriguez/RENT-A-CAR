@@ -3,11 +3,11 @@
     "start": "node src/app.js",
     "dev": "nodemon -e 'js,html' src/app.js",
     "test": "jest --coverage"
-    
   },
   "dependencies": {
     "better-sqlite3": "^8.0.1",
     "bulma": "^0.9.4",
+    "cookie-session": "^2.0.0",
     "dotenv": "^16.0.3",
     "eslint-plugin-jest": "^27.2.1",
     "express": "^4.18.2",

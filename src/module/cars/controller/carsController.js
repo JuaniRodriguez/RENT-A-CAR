@@ -17,7 +17,6 @@ module.exports= class carsController {
     async homePage(req,res) {   
         const carsData= await this.carsService.getAllCars();
         const errors=req.session.errors;
-        console.log(errors);
         res.render('cars/view/cars.html', {
             carsData,
             errors
