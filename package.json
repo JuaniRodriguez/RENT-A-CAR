@@ -1,6 +1,6 @@
 {
   "scripts": {
-    "start": "node index.js",
+    "start": "node src/app.js",
     "dev": "nodemon -e 'js,html' src/app.js",
     "test": "jest --coverage"
   },

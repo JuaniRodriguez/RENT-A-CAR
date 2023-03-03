@@ -9,7 +9,7 @@ const usersModule=require('./module/users/usersModule.js')
 const rentsModule=require('./module/rent/rentsModule.js')
 
 const app=express();
-//const port=3000;
+const port=3000;
 
 app.use(express.urlencoded({ extended: true }));  
 app.use('/public', express.static('public'));
@@ -31,6 +31,4 @@ const carsController=container.get('carsController');
 app.get('/',carsController.homePage.bind(carsController));
 
 
-//app.listen(port)
-
-module.exports=app;
+app.listen(port)
