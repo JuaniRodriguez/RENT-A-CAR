@@ -2,7 +2,7 @@ const path=require('path');
 const multer=require('multer');
 const database=require('better-sqlite3');
 const fs=require('fs');
-const session=require('cookie-session');
+const session=require('express-session');
 
 const { default:DIContainer,object,use,factory} = require('rsdi');
 const {carsController,carsService,carsRepository}= require('../module/cars/carsModule.js');
