@@ -8,15 +8,16 @@ Rent a car CRUD, with cars,users,rent modules. Using HTML, CSS, JS, Nunjucks, Bu
 
 How to run:
 
--Download repo.
+ -Download repo.
 
--Run npm install
+ -Run npm install
 
--Copy .env.dist in the same directory and change it name to .env
+ -Copy .env.dist in the same directory and change it name to .env
 
-- IF:
-  *Modifications are being made, run npm run dev and after modifying, run 'rs'.
-  *Just run npm start.
+ - IF:
+   *Modifications are being made, run npm run dev and after modifying, run 'rs'.
+   
+   *Just run npm start.
   
--Open http://localhost:3000.
+ -Open http://localhost:3000.
 
