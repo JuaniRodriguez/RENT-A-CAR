@@ -3,11 +3,15 @@ const multer=require('multer');
 const database=require('better-sqlite3');
 const fs=require('fs');
 const session=require('express-session');
+const {Sequelize}=require('sequelize')
 
 const { default:DIContainer,object,use,factory} = require('rsdi');
-const {carsController,carsService,carsRepository}= require('../module/cars/carsModule.js');
+const {carsController,carsService,carsRepository,carsModel}= require('../module/cars/carsModule.js');
 const {usersController,usersService,usersRepository}= require('../module/users/usersModule.js');
 const {rentsController,rentsRepository,rentsService}=require('../module/rent/rentsModule.js')
+
+
+//para sequelize, haria lo mismo que con runDataBase.
 
 function runDatabase() {
     const dataBase=new database(process.env.DB_PATH,{verbose:console.log});
@@ -16,6 +20,16 @@ function runDatabase() {
 
     return dataBase
 }
+
+function runSequelize() {
+
+    const sequelize = new Sequelize({
+        dialect: 'sqlite',
+        storage: process.env.DB_PATH
+    });
+    return sequelize
+}
+
 
 function configureSession() {
     const ONE_WEEK_IN_SECONDS = 604800000;
@@ -42,19 +56,27 @@ function uploadImages() {
     return multer({storage:storage});
 }
 
+function configureCarModel(container) {
+    //si mal no comprendo, este container.get sequelize lo busca en common definitions, que tiene un sequeilize.
+    return carsModel.setup(container.get('sequelize'))
+}   
+
 function addCommonDefinitions(container) {
     container.add({
         runDatabase:factory(runDatabase),
         uploadImages:factory(uploadImages),
-        session:factory(configureSession)
+        session:factory(configureSession),
+        sequelize:factory(runSequelize)
     })
 }
 
 function addCarsDefinitions(container) {
+    // lo que va dentro de object(objeto) es un una clase, y como la construyo(construct)? con lo que lleva dentro del constructor para funcionar.
     container.add({
         carsController:object(carsController).construct(use('carsService'),use('uploadImages')),
         carsService:object(carsService).construct(use('carsRepository')),
-        carsRepository:object(carsRepository).construct(use('runDatabase'))
+        carsRepository:object(carsRepository).construct(use('carsModel')),
+        carsModel: factory(configureCarModel)
     })
 }
 

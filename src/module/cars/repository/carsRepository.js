@@ -1,12 +1,21 @@
+const {fromModelToEntity}=require('../mapper/carMapper.js')
 
 module.exports= class CarRepository {
-    constructor(database) {
-        this.tableName='cars',
-        this.database=database;
+    constructor(carModel) {
+        this.carModel=carModel
+    }   
+
+    async getAllCars() {
+        console.log("calling")
+        const cars=await this.carModel.findAll();
+        console.log(cars)
+        //return cars.map(car=>fromModelToEntity(car))
+        const newCars=cars.map(car=>fromModelToEntity(car))
+        console.log(newCars)
+        return newCars
     }
-
-
-    getAllCars() {
+    
+        /*
         const carsData=`SELECT 
             id,
             brand,
@@ -22,9 +31,14 @@ module.exports= class CarRepository {
             FROM ${this.tableName}
         `
         return this.database.prepare(carsData).all()
-    }
+        */
 
-    addCar(carData) {
+    async addCar(carData) {
+
+        await this.carModel.create(carData)
+        return fromModelToEntity(carData) 
+    }
+        /*
         const data=`INSERT INTO ${this.tableName} (
                 brand,
                 model,
@@ -50,10 +64,18 @@ module.exports= class CarRepository {
                 )
         `
         return this.database.prepare(data).run();
-        
-    }
+        */
 
-    editCar(carData) {
+    async editCar(carData) {
+
+        await this.carModel.update( {
+            carData
+        }, {
+            where: {
+                id:carData.id
+            }
+        })
+        /*
         const updateCar=`UPDATE ${this.tableName} SET
             brand='${carData.brand}',
             model='${carData.model}',
@@ -70,15 +92,26 @@ module.exports= class CarRepository {
         //const response=this.database.prepare(updateCar).run();
         //console.log(response);
          return this.database.prepare(updateCar).run()
+         */
     }
 
-    deleteCar(id) {
-        const carToDelete=`DELETE FROM ${this.tableName} WHERE id=${id}`
-        this.database.prepare(carToDelete).run();
-        
+    async deleteCar(carId) {
+
+        await this.carModel.destroy({
+            where: {
+                id:carId
+            }
+        })
+        //const carToDelete=`DELETE FROM ${this.tableName} WHERE id=${id}`
+        //this.database.prepare(carToDelete).run();
     }
 
-    getCarById(id) {
+
+    async getCarById(id) {
+
+        const car=await this.carModel.findByPk(id);
+        return fromModelToEntity(car)
+        /*
         const carData=`SELECT
             id,
             brand,
@@ -96,7 +129,7 @@ module.exports= class CarRepository {
         
         const car=this.database.prepare(carData).get(id);
         return car
-        
+        */
     }
 }
 

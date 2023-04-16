@@ -27,6 +27,18 @@ carModule.initApp(app,container);
 usersModule.initUsers(app,container);
 rentsModule.initRent(app,container)
 
+async function dbConnection() {
+
+    try {
+        await container.get('sequelize').authenticate();
+        console.log('Connection has been established successfully.');
+      } catch (error) {
+        console.error('Unable to connect to the database:', error);
+      }
+}
+
+dbConnection()
+
 const carsController=container.get('carsController');
 app.get('/',carsController.homePage.bind(carsController));
 
