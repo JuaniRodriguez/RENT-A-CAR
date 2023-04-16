@@ -52,18 +52,15 @@ class CarModel extends Model {
                 },
                 createdAt:{
                     type: DataTypes.DATE,
-                    defaultValue:sequelize.NOW
                 },
                 updatedAt:{
                     type: DataTypes.DATE,
-                    defaultValue:sequelize.NOW
                     
                 },
             },
             {
                 sequelize,
                 modelName: 'Car',
-                timestamps: false,
             }
         );
         return CarModel

@@ -9,10 +9,10 @@ module.exports= class CarRepository {
         console.log("calling")
         const cars=await this.carModel.findAll();
         console.log(cars)
-        //return cars.map(car=>fromModelToEntity(car))
-        const newCars=cars.map(car=>fromModelToEntity(car))
-        console.log(newCars)
-        return newCars
+        return cars.map(car=>fromModelToEntity(car))
+        //const newCars=cars.map(car=>fromModelToEntity(car))
+        //console.log(newCars)
+        //return newCars
     }
     
         /*
@@ -68,9 +68,7 @@ module.exports= class CarRepository {
 
     async editCar(carData) {
 
-        await this.carModel.update( {
-            carData
-        }, {
+        await this.carModel.update(carData,{
             where: {
                 id:carData.id
             }
