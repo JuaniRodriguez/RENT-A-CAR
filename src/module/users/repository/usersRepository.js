@@ -1,89 +1,44 @@
-
-
+const fromModelToEntity=require('../mapper/userMapper.js')
 module.exports=class UsersRepository {
     constructor(userModel) {
-        this.tableName='users',
-        this.database=database
+        this.userModel=userModel;
     }
 
-    getAllUsers() {
-        const usersData=`SELECT 
-            id,
-            name,
-            surname,
-            age,
-            phone,
-            email,
-            document
-            FROM ${this.tableName}
-        `
-           // console.log(this.database.prepare(usersData).all())
-        return this.database.prepare(usersData).all()
+    async getAllUsers() {
+        const users=await this.userModel.findAll();
+        console.log(users)
+        return users.map(user=>fromModelToEntity(user))
     }
 
-    addUser(userData) {//tengo que chequear si ya existe el id
+    async addUser(userData) {//tengo que chequear si ya existe el id
         //console.log(userData)
-        const data=`INSERT INTO ${this.tableName} (
-                name,
-                surname,
-                age,
-                phone,
-                email,
-                document
-                )VALUES(
-                '${userData.name}',
-                '${userData.surname}',
-                ${userData.age},
-                ${userData.phone},
-                '${userData.email}',
-                '${userData.document}'
-                )
-        `
-        //const result=this.database.prepare(data).run();
-       return this.database.prepare(data).run()
-
-        //return getuserById(result.lastInsertRowId)
-        //return response.lastInsertRowid
+        await this.userModel.create(userData)
+        return fromModelToEntity(userData) 
         
     }
 
-    editUser(userData) {
-        //const newId=Number(userData.id);
-        console.log(userData)
+    async editUser(userData) {
 
-        const updateUser=`UPDATE ${this.tableName} SET
-            name='${userData.name}',
-            surname='${userData.surname}',
-            age='${userData.age}',
-            phone='${userData.phone}',
-            email='${userData.email}',
-            document='${userData.document}'
-            WHERE id=${userData.id}
-        `
-        
-        this.database.prepare(updateUser).run()
+        await this.userModel.update(userData,{
+            where: {
+                id:userData.id
+            }
+        })
     }
 
-    deleteUser(id) {
-        const userToDelete=`DELETE FROM ${this.tableName} WHERE id=${id}`
-        this.database.prepare(userToDelete).run();
+    async deleteUser(id) {
+
+        await this.userModel.destroy({
+            where: {
+                id:userId
+            }
+        })
         
     }
 
-    getUserById(id) {
-        console.log(id)
-        const userData=`SELECT
-            id,
-            name,
-            surname,
-            age,
-            phone,
-            email,
-            document
-            FROM ${this.tableName} WHERE id=?
-        `
+    async getUserById(id) {
         
-        const user=this.database.prepare(userData).get(id)
-        return user
+        const user=await this.userModel.findByPk(id);
+        return fromModelToEntity(user)
     }
 }

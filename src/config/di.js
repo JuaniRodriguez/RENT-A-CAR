@@ -7,7 +7,7 @@ const {Sequelize}=require('sequelize')
 
 const { default:DIContainer,object,use,factory} = require('rsdi');
 const {carsController,carsService,carsRepository,carsModel}= require('../module/cars/carsModule.js');
-const {usersController,usersService,usersRepository}= require('../module/users/usersModule.js');
+const {usersController,usersService,usersRepository,usersModel}= require('../module/users/usersModule.js');
 const {rentsController,rentsRepository,rentsService}=require('../module/rent/rentsModule.js')
 
 
@@ -61,6 +61,11 @@ function configureCarModel(container) {
     return carsModel.setup(container.get('sequelize'))
 }   
 
+function configureUserModel(container) {
+    //si mal no comprendo, este container.get sequelize lo busca en common definitions, que tiene un sequeilize.
+    return usersModel.setup(container.get('sequelize'))
+}  
+
 function addCommonDefinitions(container) {
     container.add({
         runDatabase:factory(runDatabase),
@@ -84,7 +89,8 @@ function addUsersDefinitions(container) {
     container.add({
         usersController:object(usersController).construct(use('usersService')),
         usersService:object(usersService).construct(use('usersRepository')),
-        usersRepository:object(usersRepository).construct(use('runDatabase'))
+        usersRepository:object(usersRepository).construct(use('usersModel')),
+        usersModel:factory(configureUserModel)
     })
 }
 

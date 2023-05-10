@@ -15,7 +15,7 @@ class UserModel extends Model {
                     type: DataTypes.STRING,
                     allowNull:false,
                 },
-                lastName:{
+                surname:{
                     type: DataTypes.STRING,
                     allowNull:false,
                 },
@@ -27,7 +27,7 @@ class UserModel extends Model {
                     type: DataTypes.INTEGER,
                     allowNull:false,
                 },
-                country:{
+                nacionality:{
                     type: DataTypes.STRING,
                     allowNull:false,
                 },
@@ -45,10 +45,6 @@ class UserModel extends Model {
                 },
                 birthDate:{
                     type: DataTypes.STRING,
-                },
-                price:{
-                    type: DataTypes.INTEGER,
-                    allowNull:false,
                 },
                 createdAt:{
                     type: DataTypes.DATE,
