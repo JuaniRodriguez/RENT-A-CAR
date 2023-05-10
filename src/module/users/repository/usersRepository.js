@@ -1,5 +1,7 @@
+
+
 module.exports=class UsersRepository {
-    constructor(database) {
+    constructor(userModel) {
         this.tableName='users',
         this.database=database
     }

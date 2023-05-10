@@ -6,7 +6,6 @@ module.exports= class CarRepository {
     }   
 
     async getAllCars() {
-        console.log("calling")
         const cars=await this.carModel.findAll();
         console.log(cars)
         return cars.map(car=>fromModelToEntity(car))
