@@ -1,4 +1,4 @@
-const fromModelToEntity=require('../mapper/userMapper.js')
+const {fromModelToEntity}=require('../mapper/userMapper.js')
 module.exports=class UsersRepository {
     constructor(userModel) {
         this.userModel=userModel;
@@ -6,12 +6,10 @@ module.exports=class UsersRepository {
 
     async getAllUsers() {
         const users=await this.userModel.findAll();
-        console.log(users)
         return users.map(user=>fromModelToEntity(user))
     }
 
     async addUser(userData) {//tengo que chequear si ya existe el id
-        //console.log(userData)
         await this.userModel.create(userData)
         return fromModelToEntity(userData) 
         
@@ -26,7 +24,7 @@ module.exports=class UsersRepository {
         })
     }
 
-    async deleteUser(id) {
+    async deleteUser(userId) {
 
         await this.userModel.destroy({
             where: {

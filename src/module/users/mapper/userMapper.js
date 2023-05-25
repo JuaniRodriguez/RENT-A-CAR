@@ -1,19 +1,22 @@
 const userEntity=require('../entity/userEntity.js')
 
 function fromModelToEntity(user) {
-    const {id,name,surname,documentType,documentNumber,nacionality,address,phone,email,birthDate}=user;
+    const {id,name,surname,phone,email,nacionality,birthDate,documentType,documentNumber,address,createdAt,updatedAt}=user;
 
     return new userEntity (
         user.id,
         user.name,
         user.surname,
-        user.documentType,
-        user.documentNumber,
-        user.nacionality,
-        user.address,
         user.phone,
         user.email,
-        user.birthDate
+        user.nacionality,
+        user.birthDate,
+        user.documentType,
+        user.documentNumber,
+        user.address,
+        user.createdAt,
+        user.updatedAt
+
     )
 }
 

@@ -30,9 +30,12 @@ module.exports=class UsersController {
     async createdUser(req,res) {
         try {
         const formData=req.body;
+        console.log(formData)
         await this.usersService.createUser(formData);
         } catch(e) {
+            console.log("entro")
             req.session.errors=[e.message]
+            console.log(e.message)
         }
         res.redirect('/users')
     }

@@ -7,10 +7,31 @@
                     <td class="has-text-centered is-size-5">{{user.id}}</td>
                     <td class="has-text-centered is-size-5"> {% if user.name!=='' %} {{user.name}} {% else %} - {% endif %}</td>
                     <td class="has-text-centered is-size-5"> {% if user.surname!=='' %} {{user.surname}} {% else %} - {% endif %}</td>  
-                    <td class="has-text-centered is-size-5"> {% if user.age!=='' %} {{user.age}} {% else %} - {% endif %}</td>
                     <td class="has-text-centered is-size-5"> {% if user.phone!=='' %} {{user.phone}} {% else %} - {% endif %}</td>
                     <td class="has-text-centered is-size-5"> {% if user.email!=='' %} {{user.email}} {% else %} - {% endif %}</td>
-                    <td class="has-text-centered is-size-5"> {% if user.document!=='' %} {{user.document}} {% else %} - {% endif %}</td>
+                    <td class="has-text-centered is-size-5"> {% if user.document!=='' %} {{user.nacionality}} {% else %} - {% endif %}</td>
+                    <td class="has-text-centered is-size-5">
+
+                        <div class="dropdown is-hoverable">
+                            <div class="dropdown-trigger  has-text-centered">
+                              <button class="button" aria-haspopup="true" aria-controls="dropdown-menu4">
+                                <span>View</span>
+                              </button>
+                            </div>
+                            <div class="dropdown-menu" id="dropdown-menu4" role="menu">
+                              <div class="dropdown-content">
+                                <div class="dropdown-item">
+                                  <ol>
+                                    <li class="is-size-7">BIRTHDATE:  {{user.birthDate}}</li>
+                                    <li class="is-size-7">DOC/TYPE:  {{user.documentType}}</li>
+                                    <li class="is-size-7">DOC/NUMBER:  {{user.documentNumber}}</li>
+                                    <li class="is-size-7">ADDRESS:  {{user.address}}</li>
+                                  </ol>
+                                </div>
+                              </div>
+                            </div>
+                        </div>
+                    </td>
                     <td class="has-text-centered is-size-5"><a href='/users/editUserForm/{{user.id}}'>EDIT</a>-<a href="/users/deleteUser/{{user.id}}">DELETE</a></td>
                 </tr>
             {% endfor %}

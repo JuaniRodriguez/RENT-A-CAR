@@ -19,22 +19,6 @@ class UserModel extends Model {
                     type: DataTypes.STRING,
                     allowNull:false,
                 },
-                documentType:{
-                    type: DataTypes.INTEGER,
-                    allowNull:false,
-                },
-                documentNumber:{
-                    type: DataTypes.INTEGER,
-                    allowNull:false,
-                },
-                nacionality:{
-                    type: DataTypes.STRING,
-                    allowNull:false,
-                },
-                address:{
-                    type: DataTypes.STRING,
-                    allowNull:false,
-                },
                 phone:{
                     type: DataTypes.INTEGER,
                     allowNull:false,
@@ -43,8 +27,24 @@ class UserModel extends Model {
                     type: DataTypes.STRING,
                     allowNull:false,
                 },
+                nacionality:{
+                    type: DataTypes.STRING,
+                    allowNull:false,
+                },
                 birthDate:{
                     type: DataTypes.STRING,
+                },
+                documentType:{
+                    type: DataTypes.STRING,
+                    allowNull:false,
+                },
+                documentNumber:{
+                    type: DataTypes.INTEGER,
+                    allowNull:false,
+                },
+                address:{
+                    type: DataTypes.STRING,
+                    allowNull:false,
                 },
                 createdAt:{
                     type: DataTypes.DATE,

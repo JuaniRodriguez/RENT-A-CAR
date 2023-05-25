@@ -32,7 +32,7 @@ module.exports= class CarRepository {
         */
 
     async addCar(carData) {
-
+        console.log(carData)
         await this.carModel.create(carData)
         return fromModelToEntity(carData) 
     }
