@@ -17,7 +17,7 @@ HOW TO RUN:
   - IF:
   
        *Modifications are being made, run npm run dev and after modifying, run 'rs'.
-   
+   ELSE:
        *Just run npm start.
   
   -Open http://localhost:3000.
