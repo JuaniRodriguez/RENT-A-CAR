@@ -12,7 +12,7 @@ HOW TO RUN:
 
   -Run npm install
 
-  -Copy .env.dist in the same directory and change it name to .env
+  -Copy .env.dist in the same directory and change its name to .env
 
   - IF:
   
