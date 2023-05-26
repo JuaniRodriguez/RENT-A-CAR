@@ -56,7 +56,8 @@ class UserModel extends Model {
             },
             {
                 sequelize,
-                modelName: 'User',
+                modelName: 'user',
+                tableName:'users'
             }
         );
         return UserModel

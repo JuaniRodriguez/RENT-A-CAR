@@ -28,7 +28,7 @@
                                 <li class="is-size-5">{{rent.passengers}} passengers</li>
                                 <li class="is-size-5">{{rent.transmission}}</li>
                                 <li class="is-size-5"><a href="{{rent.picture}}" target="blank">IMAGE</a></li>
-                                <li class="is-size-5">$${{rent.price}}</li>
+                                <li class="is-size-5">$${{rent.pricePerDay}}</li>
                               </ol>
                             </div>
                           </div>
@@ -40,7 +40,7 @@
                 <td class="has-text-centered is-size-5">{{rent.document}}</td>  
                 <td class="has-text-centered is-size-5">{{rent.startDate}}</td>
                 <td class="has-text-centered is-size-5">{{rent.finishDate}}</td>
-                <td class="has-text-centered is-size-5">{{rent.totalDays * rent.price}}</td>
+                <td class="has-text-centered is-size-5">{{rent.totalDays * rent.pricePerDay}}</td>
                 <td class="has-text-centered is-size-5"><a href='/rent/editRentForm/{{rent.id}}'>EDIT</a>-<a href="/rent/deleteRent/{{rent.id}}">DELETE</a></td>
 
             </tr>

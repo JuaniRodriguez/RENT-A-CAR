@@ -18,6 +18,8 @@ module.exports= class rentsController {
 
     async rentPage(req,res) {
         const rentedCars=await this.rentsService.getAllRents();
+        console.log("controller all")
+        console.log(rentedCars)
         const errors=req.session.errors
         res.render('rent/view/allRents.html', {
             rentedCars,
@@ -46,10 +48,15 @@ module.exports= class rentsController {
 
         try {
             const formData=req.body;
+            console.log("estoy en controller")
+            console.log(formData)
+            const selectedCar=await this.carsService.getCarById(formData.fk_car);//ya que ese .car es el ID del auto seleccionado(en el form lo adjunto en el value={{car.id}})
             const totalDays=((new Date(formData.finishDate).getTime())-(new Date(formData.startDate).getTime()))/(1000*60*60*24)
+            const totalPrice=selectedCar.price*totalDays;
             const newFormData={
                 ...formData,
-                totalDays
+                pricePerDay:selectedCar.price,
+                totalPrice
                 
             }
             await this.rentsService.addRent(newFormData)
@@ -63,8 +70,9 @@ module.exports= class rentsController {
         const id=req.params['id'];
         try {
             const rentData= await this.rentsService.getRentById(id);
-            const cars=await this.carsService.getAllCars();
-            const users=await this.usersService.getAllUsers();
+            console.log(rentData)
+            const cars=await this.carsService.getCarById(id);
+            const users=await this.usersService.getRentById(id);
             res.render('rent/view/editRentForm.html', {
                 rentData,
                 cars,

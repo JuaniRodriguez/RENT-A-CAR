@@ -25,7 +25,7 @@
                             <label class="label">CHOOSE CAR</label>
                             <div class="control">
                                 <div class="select">
-                                    <select name="car">
+                                    <select name="fk_car">
                                         {% for car in cars %}
                                             <option value={{car.id}}>{{car.brand}} / {{car.model}} / {{car.year}} / {{car.kms}}kms / {{car.color}} / {% if car.ac==="Yes" %} AC {% else %} NO AC {% endif %} / {{car.passengers}} / {{car.transmission}} / $${{car.price}}</option>
                                         {% endfor %}
@@ -40,7 +40,7 @@
                             <label class="label">USER</label>
                             <div class="control">
                                 <div class="select">
-                                    <select name="user">
+                                    <select name="fk_user">
                                         {% for user in users %}
                                             <option value={{user.id}}>{{user.name}} {{user.surname}} {{user.document}}</option>
                                         {% endfor %}

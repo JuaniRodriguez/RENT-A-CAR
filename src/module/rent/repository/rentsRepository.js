@@ -1,67 +1,26 @@
+const {fromModelToEntity}=require('../mapper/rentMapper.js')
+const carsModel=require('../../cars/model/carModel.js')
+const usersModel=require('../../users/model/userModel.js')
 module.exports= class rentsRepository {
-    constructor(database) {
-       this.tableName='rents',
-       this.database=database 
+    constructor(rentModel) {
+       this.rentModel=rentModel
     }
 
-    getAllRents() {
-        
-        /*const carsData=`SELECT 
-        id,
-        fk_car,
-        fk_user,
-        startDate,
-        finishDate,
-        totalDays
-        
-        FROM ${this.tableName}
-    `
-    return this.database.prepare(carsData).all()*/
-        const data=`SELECT
-            rents.id,
-            cars.brand,
-            cars.model,
-            cars.year,
-            cars.kms,
-            cars.color,
-            cars.ac,
-            cars.passengers,
-            cars.transmission,
-            cars.picture,
-            cars.price,
-            users.name,
-            users.surname,
-            users.document,
-            rents.startDate,
-            rents.finishDate,
-            rents.totalDays
-            FROM rents
-            INNER JOIN cars ON rents.fk_car=cars.id
-            INNER JOIN users ON rents.fk_user=users.id; 
-        `
-        //console.log(this.database.prepare(data).get());
-        return this.database.prepare(data).all()
+    async getAllRents() {
+        console.error("entro")
+        const rents=await this.rentModel.findAll(/*{
+        //    include:[
+        //        {model:'car'},
+        //        {model:'user'},
+        //    ],
+        }*/);
+        //return rents
+        return rents.map(rent=>fromModelToEntity(rent))
     }
 
-    addRent(rentData) {
-        console.log(rentData);
-        const data=`INSERT INTO ${this.tableName} (
-            fk_car,
-            fk_user,
-            startDate,
-            finishDate,
-            totalDays
-            )VALUES(
-             ${rentData.car},
-             ${rentData.user},
-            '${rentData.startDate}',
-            '${rentData.finishDate}',
-             ${rentData.totalDays}
-            )
-    `
-    //poner un try catch en caso de que no respete el foreign key
-    //const result=this.database.prepare(data).run();
-    return this.database.prepare(data).run()
+    async addRent(rentData) {
+        await this.rentModel.create(rentData)
+        return fromModelToEntity(rentData) 
     }
 
     editRent(rentData) {
@@ -77,22 +36,19 @@ module.exports= class rentsRepository {
         return this.database.prepare(updateRent).run()
     }
 
-    deleteRent(id) {
-        const rentToDelete=`DELETE FROM ${this.tableName} WHERE id=${id}`
-        this.database.prepare(rentToDelete).run();
+    async deleteRent(rentId) {
+
+        await this.rentModel.destroy({
+            where: {
+                id:rentId
+            }
+        })
     }
 
-    getRentById(id) {
-        const rentData=`SELECT
-            id,
-            startDate,
-            finishDate
-            
-            FROM ${this.tableName} WHERE id=?
-        `
-        
-        const rent=this.database.prepare(rentData).get(id)
-        return rent
+    async getRentById(id) {
+
+        const rent=await this.rentModel.findByPk(id);
+        return fromModelToEntity(rent)
     }
 
 }

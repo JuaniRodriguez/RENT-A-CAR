@@ -1,6 +1,6 @@
 const path=require('path');
 const multer=require('multer');
-const database=require('better-sqlite3');
+//const database=require('better-sqlite3');
 const fs=require('fs');
 const session=require('express-session');
 const {Sequelize}=require('sequelize')
@@ -8,24 +8,25 @@ const {Sequelize}=require('sequelize')
 const { default:DIContainer,object,use,factory} = require('rsdi');
 const {carsController,carsService,carsRepository,carsModel}= require('../module/cars/carsModule.js');
 const {usersController,usersService,usersRepository,usersModel}= require('../module/users/usersModule.js');
-const {rentsController,rentsRepository,rentsService}=require('../module/rent/rentsModule.js')
+const {rentsController,rentsRepository,rentsService,rentsModel}=require('../module/rent/rentsModule.js')
 
 
 //para sequelize, haria lo mismo que con runDataBase.
-
+/*
 function runDatabase() {
     const dataBase=new database(process.env.DB_PATH,{verbose:console.log});
     const tables = fs.readFileSync(process.env.DB_TABLES_PATH, 'utf8');
     dataBase.exec(tables);
 
     return dataBase
-}
+}*/
 
 function runSequelize() {
 
     const sequelize = new Sequelize({
         dialect: 'sqlite',
-        storage: process.env.DB_PATH
+        storage: process.env.DB_PATH,
+        //logging: (...msg) => console.log(msg)
     });
     return sequelize
 }
@@ -62,13 +63,19 @@ function configureCarModel(container) {
 }   
 
 function configureUserModel(container) {
-    //si mal no comprendo, este container.get sequelize lo busca en common definitions, que tiene un sequeilize.
     return usersModel.setup(container.get('sequelize'))
+}  
+
+function configureRentModel(container) {
+    const model=rentsModel.setup(container.get('sequelize'))
+    model.setupAssociations(carsModel,usersModel)
+    return model
+   
 }  
 
 function addCommonDefinitions(container) {
     container.add({
-        runDatabase:factory(runDatabase),
+        //runDatabase:factory(runDatabase),
         uploadImages:factory(uploadImages),
         session:factory(configureSession),
         sequelize:factory(runSequelize)
@@ -98,7 +105,8 @@ function addRentsDefinitions(container) {
     container.add({
         rentsController:object(rentsController).construct(use('carsService'),use('usersService'),use('rentsService')),
         rentsService:object(rentsService).construct(use('rentsRepository')),
-        rentsRepository:object(rentsRepository).construct(use('runDatabase'))
+        rentsRepository:object(rentsRepository).construct(use('rentsModel')),
+        rentsModel:factory(configureRentModel)
 
     })
 }

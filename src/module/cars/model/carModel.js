@@ -60,7 +60,8 @@ class CarModel extends Model {
             },
             {
                 sequelize,
-                modelName: 'Car',
+                modelName: 'car',
+                tableName:'cars'
             }
         );
         return CarModel
